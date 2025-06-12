@@ -1,0 +1,9 @@
+import 'package:e_pact_app/features/role_initial_screen/view/role_selection.dart';
+import 'package:e_pact_app/utils/const/route_const.dart';
+import 'package:get/get_navigation/src/routes/get_route.dart';
+
+class Routes {
+  static final routes = [
+    GetPage(name: RouteList.inital, page: () => RoleSelectionScreen()),
+  ];
+}
