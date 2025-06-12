@@ -1,4 +1,5 @@
 import 'package:e_pact_app/utils/const/colors_const.dart';
+import 'package:e_pact_app/utils/const/route_const.dart';
 import 'package:e_pact_app/utils/helper_widgets/common_text_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -78,7 +79,7 @@ class RoleSelectionScreen extends StatelessWidget {
                 ),
                 onPressed: () {
                   // Navigate to Employee flow
-                  Get.toNamed('/employeeLogin');
+                  Get.toNamed(RouteList.login);
                 },
                 child: CommonTextWidgets.textRoboto(
                   text: 'Employee',
