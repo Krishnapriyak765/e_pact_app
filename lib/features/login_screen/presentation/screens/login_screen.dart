@@ -1,4 +1,5 @@
 import 'package:e_pact_app/utils/const/colors_const.dart';
+import 'package:e_pact_app/utils/const/route_const.dart';
 import 'package:e_pact_app/utils/helper_widgets/common_text_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -19,6 +20,8 @@ class _LoginScreenState extends State<LoginScreen> {
   void _validateAndLogin() {
     if (_formKey.currentState!.validate()) {
       // Perform login logic here
+      OnTap() {}
+
       Get.snackbar("Success", "Logging in...");
     }
   }
@@ -164,7 +167,10 @@ class _LoginScreenState extends State<LoginScreen> {
                             borderRadius: BorderRadius.circular(10),
                           ),
                         ),
-                        onPressed: _validateAndLogin,
+                        onPressed: () {
+                          Get.toNamed(RouteList.dashboard1);
+                        },
+                        // _validateAndLogin,
                         child: CommonTextWidgets.textRoboto(
                           text: "LOG IN",
                           size: Get.height * 0.018,

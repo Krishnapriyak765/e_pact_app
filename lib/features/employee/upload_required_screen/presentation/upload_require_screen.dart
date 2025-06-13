@@ -1,8 +1,9 @@
 // This is the main upload check screen shown after login
 // File: lib/view/employee/upload_required_screen.dart
 
-import 'package:e_pact_app/features/employee/document_upload_screen/presentation/document_upload_screen.dart';
+import 'package:e_pact_app/features/bottom_navigation/bottom_navigation_bar.dart';
 import 'package:e_pact_app/utils/const/colors_const.dart';
+import 'package:e_pact_app/utils/const/route_const.dart';
 import 'package:e_pact_app/utils/helper_widgets/appbar_custom_widget.dart';
 import 'package:e_pact_app/utils/helper_widgets/common_text_widget.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +17,7 @@ class UploadRequiredScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.white,
       appBar: CustomAppBar(
-        prefixIcon: Icons.refresh,
+        prefixIcon: Icons.menu,
         suffixIcon: Icons.notifications_paused,
       ),
 
@@ -26,8 +27,9 @@ class UploadRequiredScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            SizedBox(height: Get.height * 0.008),
             CommonTextWidgets.textRoboto(
-              text: 'Hi! Vinith',
+              text: 'Hi ! Vinith',
               size: Get.height * 0.024,
               color: AppColors.black,
               fontWeight: FontWeight.w600,
@@ -56,14 +58,14 @@ class UploadRequiredScreen extends StatelessWidget {
                         CommonTextWidgets.textRoboto(
                           text: "Vinith's profile",
                           size: Get.height * 0.02,
-                          color: AppColors.black,
+                          color: AppColors.primary,
                           fontWeight: FontWeight.w500,
                         ),
                         SizedBox(height: Get.height * 0.004),
                         CommonTextWidgets.textRoboto(
                           text: "Missing Details",
                           size: Get.height * 0.017,
-                          color: AppColors.red,
+                          color: AppColors.black,
                         ),
                       ],
                     ),
@@ -86,7 +88,7 @@ class UploadRequiredScreen extends StatelessWidget {
             CommonTextWidgets.textRoboto(
               text: 'Boost 90%',
               size: Get.height * 0.018,
-              color: AppColors.primary,
+              color: AppColors.green,
               fontWeight: FontWeight.w600,
             ),
             SizedBox(height: Get.height * 0.005),
@@ -102,7 +104,8 @@ class UploadRequiredScreen extends StatelessWidget {
                 height: Get.height * 0.06,
                 child: OutlinedButton(
                   onPressed: () {
-                    Get.to(() => const DocumentUploadScreen());
+                    // Get.to(() => const DocumentUploadScreen());
+                    Get.toNamed(RouteList.docupload);
                   },
                   style: OutlinedButton.styleFrom(
                     side: const BorderSide(color: AppColors.primary),
@@ -122,7 +125,7 @@ class UploadRequiredScreen extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
+      bottomNavigationBar: CustomBottomNavBar(
         currentIndex: 0,
         onTap: (index) {
           Get.snackbar(
@@ -133,11 +136,6 @@ class UploadRequiredScreen extends StatelessWidget {
           );
         },
         selectedItemColor: AppColors.primary,
-        items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.task), label: 'Tasks'),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
-        ],
       ),
     );
   }

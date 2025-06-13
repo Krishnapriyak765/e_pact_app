@@ -1,6 +1,7 @@
 // File: lib/view/employee/document_upload_screen.dart
 
 import 'dart:io';
+import 'package:e_pact_app/features/bottom_navigation/main_dashboard.dart';
 import 'package:e_pact_app/utils/const/colors_const.dart';
 import 'package:e_pact_app/utils/helper_widgets/appbar_custom_widget.dart';
 import 'package:e_pact_app/utils/helper_widgets/common_text_widget.dart';
@@ -48,7 +49,7 @@ class _DocumentUploadScreenState extends State<DocumentUploadScreen> {
     String fileType,
   ) {
     return Card(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
       margin: const EdgeInsets.symmetric(vertical: 8),
       child: Padding(
         padding: const EdgeInsets.all(12.0),
@@ -59,14 +60,9 @@ class _DocumentUploadScreenState extends State<DocumentUploadScreen> {
               text: title,
               size: Get.height * 0.018,
               color: AppColors.black,
-              fontWeight: FontWeight.w600,
+              fontWeight: FontWeight.w400,
             ),
-            const SizedBox(height: 6),
-            CommonTextWidgets.textRoboto(
-              text: subtitle,
-              size: Get.height * 0.014,
-              color: AppColors.grey,
-            ),
+
             const SizedBox(height: 8),
             Row(
               children: [
@@ -89,6 +85,14 @@ class _DocumentUploadScreenState extends State<DocumentUploadScreen> {
                   child: const Text('Send'),
                 ),
               ],
+            ),
+            const SizedBox(height: 6),
+            Center(
+              child: CommonTextWidgets.textRoboto(
+                text: subtitle,
+                size: Get.height * 0.014,
+                color: AppColors.grey,
+              ),
             ),
           ],
         ),
@@ -119,7 +123,11 @@ class _DocumentUploadScreenState extends State<DocumentUploadScreen> {
             Center(
               child: Column(
                 children: [
-                  CircleAvatar(radius: 40, backgroundColor: AppColors.grey),
+                  CircleAvatar(
+                    radius: 40,
+                    backgroundColor: AppColors.bgprofile,
+                    child: Icon(Icons.person_add_alt_1, color: AppColors.grey),
+                  ),
                   const SizedBox(height: 8),
                   CommonTextWidgets.textRoboto(
                     text: 'Supported file formats: PNG, JPG, JPEG, GIF',
@@ -147,7 +155,10 @@ class _DocumentUploadScreenState extends State<DocumentUploadScreen> {
                         style: ElevatedButton.styleFrom(
                           backgroundColor: AppColors.primary,
                         ),
-                        child: const Text('Upload photo'),
+                        child: Text(
+                          'Upload photo',
+                          selectionColor: AppColors.white,
+                        ),
                       ),
                     ],
                   ),
@@ -184,7 +195,7 @@ class _DocumentUploadScreenState extends State<DocumentUploadScreen> {
                 onPressed:
                     _canProceed
                         ? () {
-                          // Get.offAll(() => const MainDashboard());
+                          Get.offAll(() => const MainDashboard());
                         }
                         : null,
                 style: ElevatedButton.styleFrom(
