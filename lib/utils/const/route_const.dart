@@ -12,4 +12,10 @@ class RouteList {
   static const String announcement = '/announcement';
   static const String profile = '/profile';
   static const String attendance = '/attendance';
+  static const String emplogin = '/emplogin';
+  static const String addinfo = '/addinfo';
+  static const String Chooseplan = '/Chooseplan';
+  static const String DiscountPage = '/DiscountPage';
+  static const String DiscountDetailsPage = '/DiscountDetailsPage';
+  static const String PaymentPage = '/PaymentPage';
 }

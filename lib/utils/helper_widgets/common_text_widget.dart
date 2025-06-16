@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class CommonTextWidgets {
-  // Method to create customizable text
+  // Method to create customizable text using GoogleFonts.roboto
   static Widget textRoboto({
     required String text,
     required double size,
@@ -14,8 +15,7 @@ class CommonTextWidgets {
   }) {
     return Text(
       text,
-      style: TextStyle(
-        fontFamily: 'Roboto',
+      style: GoogleFonts.roboto(
         fontSize: size,
         fontWeight: fontWeight,
         color: color,

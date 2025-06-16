@@ -4,6 +4,13 @@ import 'package:e_pact_app/features/employee/attendance/presenatation/attendance
 import 'package:e_pact_app/features/employee/document_upload_screen/presentation/document_upload_screen.dart';
 import 'package:e_pact_app/features/employee/profile/presentation/profile_screen.dart';
 import 'package:e_pact_app/features/employee/upload_required_screen/presentation/upload_require_screen.dart';
+import 'package:e_pact_app/features/employer/choose_plan/view/discount_details.dart';
+import 'package:e_pact_app/features/employer/choose_plan/view/discount_screen.dart';
+import 'package:e_pact_app/features/employer/choose_plan/view/payment_screen.dart';
+import 'package:e_pact_app/features/employer/choose_plan/view/plan.dart';
+import 'package:e_pact_app/features/employer/singup_screen/view/addtional_information.dart';
+import 'package:e_pact_app/features/employer/singup_screen/view/signup_screen.dart';
+import 'package:e_pact_app/features/login_screen/presentation/screens/employer_login_screen.dart';
 import 'package:e_pact_app/features/login_screen/presentation/screens/login_screen.dart';
 import 'package:e_pact_app/features/role_initial_screen/view/role_selection.dart';
 import 'package:e_pact_app/utils/const/route_const.dart';
@@ -19,5 +26,15 @@ class Routes {
     GetPage(name: RouteList.announcement, page: () => AnnouncementScreen()),
     GetPage(name: RouteList.profile, page: () => ProfileScreen()),
     GetPage(name: RouteList.attendance, page: () => AttendanceScreen()),
+    GetPage(name: RouteList.emplogin, page: () => EmployerLoginScreen()),
+    GetPage(name: RouteList.signup, page: () => EmpSignupscreen()),
+    GetPage(name: RouteList.addinfo, page: () => AddtionalInformation()),
+    GetPage(name: RouteList.Chooseplan, page: () => ChoosePlanPage()),
+    GetPage(name: RouteList.DiscountPage, page: () => DiscountPage()),
+    GetPage(
+      name: RouteList.DiscountDetailsPage,
+      page: () => DiscountDetailsPage(),
+    ),
+    GetPage(name: RouteList.PaymentPage, page: () => PaymentPage()),
   ];
 }

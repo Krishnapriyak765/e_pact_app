@@ -53,7 +53,7 @@ class RoleSelectionScreen extends StatelessWidget {
                 ),
                 onPressed: () {
                   // Navigate to Employer flow
-                  Get.toNamed('/employerLogin');
+                  Get.toNamed('/emplogin');
                 },
                 child: CommonTextWidgets.textRoboto(
                   text: 'Employer',
