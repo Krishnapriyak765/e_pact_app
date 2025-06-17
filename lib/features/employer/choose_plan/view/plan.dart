@@ -1,10 +1,9 @@
-import 'package:e_pact_app/features/employer/choose_plan/view/discount_screen.dart';
 import 'package:e_pact_app/utils/const/route_const.dart';
 import 'package:e_pact_app/utils/helper_widgets/appbar_custom_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../custom_plandata.dart' show plans;
+import '../widgets/custom_plandata.dart' show plans;
 
 class ChoosePlanPage extends StatefulWidget {
   @override
@@ -128,7 +127,7 @@ class _ChoosePlanPageState extends State<ChoosePlanPage> {
               SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
-                  Get.toNamed(RouteList.DiscountPage);
+                  Get.toNamed(RouteList.Couponapplyscreen);
 
                   print('Picked plan: $selectedPlan');
                 },

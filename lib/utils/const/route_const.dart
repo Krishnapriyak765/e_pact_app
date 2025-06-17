@@ -15,7 +15,11 @@ class RouteList {
   static const String emplogin = '/emplogin';
   static const String addinfo = '/addinfo';
   static const String Chooseplan = '/Chooseplan';
-  static const String DiscountPage = '/DiscountPage';
   static const String DiscountDetailsPage = '/DiscountDetailsPage';
   static const String PaymentPage = '/PaymentPage';
+  static const String Forgetpasswordscreen = '/Forgetpasswordscreen';
+  static const String Otpverifyscreen = '/Otpverifyscreen';
+  static const String SetPasswordScreen = '/SetPasswordScreen';
+  static const String PasswordDoneScreen = '/PasswordDoneScreen';
+  static const String Couponapplyscreen = '/Couponapplyscreen';
 }

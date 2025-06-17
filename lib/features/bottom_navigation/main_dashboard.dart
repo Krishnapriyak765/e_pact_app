@@ -7,7 +7,6 @@ import 'package:e_pact_app/features/employee/home/presentation/home_screen.dart'
 import 'package:e_pact_app/features/employee/profile/presentation/profile_screen.dart';
 import 'package:e_pact_app/utils/const/colors_const.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class MainDashboard extends StatefulWidget {
   const MainDashboard({super.key});

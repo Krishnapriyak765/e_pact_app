@@ -1,7 +1,10 @@
 import 'package:e_pact_app/utils/const/route_const.dart';
 import 'package:e_pact_app/utils/helper_widgets/appbar_custom_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+
+import '../widgets/payment_widget.dart';
 
 class PaymentPage extends StatefulWidget {
   const PaymentPage({super.key});
@@ -130,24 +133,41 @@ class _PaymentPageState extends State<PaymentPage> {
                           TextFormField(
                             controller: cardNumberController,
                             keyboardType: TextInputType.number,
+                            inputFormatters: [
+                              FilteringTextInputFormatter.digitsOnly,
+                              LengthLimitingTextInputFormatter(
+                                16,
+                              ), // 16 digits + 3 spaces
+                              CardNumberInputFormatter(),
+                            ],
                             decoration: const InputDecoration(
                               labelText: 'Card Number',
-                              hintText: 'Enter card number',
+                              hintText: '#### #### #### ####',
                               border: OutlineInputBorder(),
                             ),
                             validator: (value) {
                               if (value == null || value.trim().isEmpty) {
                                 return 'Card number is required';
-                              } else if (value.length < 16) {
+                              } else if (value.replaceAll(' ', '').length !=
+                                  16) {
                                 return 'Invalid card number';
                               }
                               return null;
                             },
                           ),
+
                           SizedBox(height: Get.height * 0.025),
                           TextFormField(
                             controller: cvvController,
                             keyboardType: TextInputType.number,
+                            inputFormatters: [
+                              FilteringTextInputFormatter.digitsOnly,
+
+                              LengthLimitingTextInputFormatter(
+                                3,
+                              ), // 16 digits + 3 spaces
+                              // CardNumberInputFormatter(),
+                            ],
                             decoration: const InputDecoration(
                               labelText: 'CVV',
                               hintText: 'Enter CVV',
@@ -163,12 +183,18 @@ class _PaymentPageState extends State<PaymentPage> {
                             },
                           ),
                           SizedBox(height: Get.height * 0.025),
+
                           TextFormField(
                             controller: expiryController,
-                            keyboardType: TextInputType.datetime,
+                            keyboardType: TextInputType.number,
+                            inputFormatters: [
+                              FilteringTextInputFormatter.digitsOnly,
+                              LengthLimitingTextInputFormatter(5),
+                              ExpiryDateFormatter(),
+                            ],
                             decoration: const InputDecoration(
                               labelText: 'Expiry Date',
-                              hintText: 'Enter MM/YY',
+                              hintText: 'MM/YY',
                               border: OutlineInputBorder(),
                             ),
                             validator: (value) {

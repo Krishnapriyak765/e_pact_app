@@ -8,6 +8,10 @@ import 'package:e_pact_app/features/employer/choose_plan/view/discount_details.d
 import 'package:e_pact_app/features/employer/choose_plan/view/discount_screen.dart';
 import 'package:e_pact_app/features/employer/choose_plan/view/payment_screen.dart';
 import 'package:e_pact_app/features/employer/choose_plan/view/plan.dart';
+import 'package:e_pact_app/features/employer/forget_password/view/Otpverify_screen.dart';
+import 'package:e_pact_app/features/employer/forget_password/view/intinal_screen.dart';
+import 'package:e_pact_app/features/employer/forget_password/view/password_done_screen.dart';
+import 'package:e_pact_app/features/employer/forget_password/view/set_password_screen.dart';
 import 'package:e_pact_app/features/employer/singup_screen/view/addtional_information.dart';
 import 'package:e_pact_app/features/employer/singup_screen/view/signup_screen.dart';
 import 'package:e_pact_app/features/login_screen/presentation/screens/employer_login_screen.dart';
@@ -30,11 +34,21 @@ class Routes {
     GetPage(name: RouteList.signup, page: () => EmpSignupscreen()),
     GetPage(name: RouteList.addinfo, page: () => AddtionalInformation()),
     GetPage(name: RouteList.Chooseplan, page: () => ChoosePlanPage()),
-    GetPage(name: RouteList.DiscountPage, page: () => DiscountPage()),
+    GetPage(name: RouteList.Couponapplyscreen, page: () => Couponapplyscreen()),
     GetPage(
       name: RouteList.DiscountDetailsPage,
       page: () => DiscountDetailsPage(),
     ),
     GetPage(name: RouteList.PaymentPage, page: () => PaymentPage()),
+    GetPage(
+      name: RouteList.Forgetpasswordscreen,
+      page: () => Forgetpasswordscreen(),
+    ),
+    GetPage(name: RouteList.Otpverifyscreen, page: () => Otpverifyscreen()),
+    GetPage(name: RouteList.SetPasswordScreen, page: () => SetPasswordScreen()),
+    GetPage(
+      name: RouteList.PasswordDoneScreen,
+      page: () => PasswordDoneScreen(),
+    ),
   ];
 }

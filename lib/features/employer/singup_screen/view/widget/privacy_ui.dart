@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class PrivacyPolicyCheckbox extends StatefulWidget {
   // final Function(bool?) onChanged;
@@ -15,7 +16,9 @@ class _PrivacyPolicyCheckboxState extends State<PrivacyPolicyCheckbox> {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return Padding(
+      padding:
+      EdgeInsets.symmetric(horizontal: Get.width*0.10),
       child: Row(
         children: [
           Checkbox(

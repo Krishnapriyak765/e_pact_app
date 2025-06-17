@@ -5,7 +5,7 @@ import '../const/colors_const.dart';
 class Customtextfield extends StatefulWidget {
   final TextEditingController controller;
   final String hint;
-  final Icon perfixIcon;
+  final Icon? perfixIcon;
 
   const Customtextfield({
     super.key,

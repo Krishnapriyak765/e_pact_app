@@ -5,14 +5,14 @@ import 'package:get/get.dart';
 
 import '../../../../utils/const/route_const.dart';
 
-class DiscountPage extends StatefulWidget {
-  const DiscountPage({super.key});
+class Couponapplyscreen extends StatefulWidget {
+  const Couponapplyscreen({super.key});
 
   @override
-  State<DiscountPage> createState() => _DiscountPageState();
+  State<Couponapplyscreen> createState() => _CouponapplyscreenState();
 }
 
-class _DiscountPageState extends State<DiscountPage> {
+class _CouponapplyscreenState extends State<Couponapplyscreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

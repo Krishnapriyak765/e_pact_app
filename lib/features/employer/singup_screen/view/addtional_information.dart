@@ -1,10 +1,11 @@
 import 'package:e_pact_app/utils/const/route_const.dart';
+import 'package:e_pact_app/utils/helper_widgets/appbar_custom_widget.dart';
 import 'package:e_pact_app/utils/helper_widgets/common_text_widget.dart';
-import 'package:e_pact_app/utils/helper_widgets/common_textform_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../../utils/const/colors_const.dart';
+import '../../../../utils/helper_widgets/common_textform_widget.dart';
 
 class AddtionalInformation extends StatefulWidget {
   const AddtionalInformation({super.key});
@@ -23,51 +24,52 @@ class _AddtionalInformationState extends State<AddtionalInformation> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: Colors.blueAccent,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: AppColors.black),
-          onPressed: () => Get.back(),
-        ),
-      ),
+      appBar: CustomAppBar(title: ""),
       body: SingleChildScrollView(
         child: Form(
           key: _addinfo,
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               SizedBox(height: Get.height * 0.020),
               CommonTextWidgets.textRoboto(
                 text: "Additional information".toUpperCase(),
-                size: Get.height * 0.025,
+                size: Get.height * 0.024,
                 color: AppColors.black,
                 fontWeight: FontWeight.w600,
               ),
-              SizedBox(height: Get.height * 0.005),
-              Customtextfield(
-                controller: addressonecontroller,
-                hint: "Address 1",
-                perfixIcon: Icon(Icons.book),
-              ),
-              Customtextfield(
-                controller: addresstwocontroller,
-                hint: "Address 2 ",
-                perfixIcon: Icon(Icons.book),
-              ),
-              Customtextfield(
-                controller: citycontroller,
-                hint: "City ",
-                perfixIcon: Icon(Icons.location_city),
-              ),
-              Customtextfield(
-                controller: pincodecontroller,
-                hint: "Postal code ",
-                perfixIcon: Icon(Icons.location_on),
-              ),
-              Customtextfield(
-                controller: countrycontroller,
-                hint: "Country ",
-                perfixIcon: Icon(Icons.location_city_rounded),
+              SizedBox(height: Get.height * 0.030),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: Get.width * 0.08),
+                child: Column(
+                  children: [
+                    Customtextfield(
+                      controller: addressonecontroller,
+                      hint: "Address 1",
+                      perfixIcon: Icon(Icons.book),
+                    ),
+                    Customtextfield(
+                      controller: addresstwocontroller,
+                      hint: "Address 2 ",
+                      perfixIcon: Icon(Icons.book),
+                    ),
+                    Customtextfield(
+                      controller: citycontroller,
+                      hint: "City ",
+                      perfixIcon: Icon(Icons.location_city),
+                    ),
+                    Customtextfield(
+                      controller: pincodecontroller,
+                      hint: "Postal code ",
+                      perfixIcon: Icon(Icons.location_on),
+                    ),
+                    Customtextfield(
+                      controller: countrycontroller,
+                      hint: "Country ",
+                      perfixIcon: Icon(Icons.location_city_rounded),
+                    ),
+                  ],
+                ),
               ),
               SizedBox(height: Get.height * 0.05),
               Padding(
@@ -91,9 +93,10 @@ class _AddtionalInformationState extends State<AddtionalInformation> {
                       fontWeight: FontWeight.w600,
                     ),
                     onPressed: () {
-                      if (_addinfo.currentState!.validate()) {
-                        Get.toNamed(RouteList.Chooseplan);
-                      }
+                      // if(_addinfo.currentState!.validate()){
+                      Get.toNamed(RouteList.Chooseplan);
+
+                      // }
                     },
                   ),
                 ),
