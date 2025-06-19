@@ -8,6 +8,9 @@ import 'package:e_pact_app/features/employer/choose_plan/view/discount_details.d
 import 'package:e_pact_app/features/employer/choose_plan/view/discount_screen.dart';
 import 'package:e_pact_app/features/employer/choose_plan/view/payment_screen.dart';
 import 'package:e_pact_app/features/employer/choose_plan/view/plan.dart';
+import 'package:e_pact_app/features/employer/dashboard/mainscreen/view/add_employee.dart';
+import 'package:e_pact_app/features/employer/dashboard/mainscreen/view/checkin_member.dart';
+import 'package:e_pact_app/features/employer/dashboard/view/main_dashboard.dart';
 import 'package:e_pact_app/features/employer/forget_password/view/Otpverify_screen.dart';
 import 'package:e_pact_app/features/employer/forget_password/view/intinal_screen.dart';
 import 'package:e_pact_app/features/employer/forget_password/view/password_done_screen.dart';
@@ -50,5 +53,11 @@ class Routes {
       name: RouteList.PasswordDoneScreen,
       page: () => PasswordDoneScreen(),
     ),
+    GetPage(name: RouteList.EmplMainDashboards, page: () => MainDashboards()),
+    GetPage(
+      name: RouteList.CheckinMemberscreen,
+      page: () => CheckinMemberscreen(),
+    ),
+    GetPage(name: RouteList.AddEmployee, page: () => AddEmployee()),
   ];
 }

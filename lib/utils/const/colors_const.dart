@@ -12,4 +12,12 @@ class AppColors {
   static const Color white = Colors.white;
   static const Color black = Colors.black;
   static const Color bgColor = Colors.white;
+  static const Color appbarColor = Color(0xFF140859);
+  static const Color appbarbgColor = Color(0xFF540A78);
+
+  LinearGradient kPurpleLinearGradient = LinearGradient(
+    begin: Alignment.centerLeft,
+    end: Alignment.centerRight,
+    colors: [Color(0xFF140859), Color(0xFF540A78)],
+  );
 }

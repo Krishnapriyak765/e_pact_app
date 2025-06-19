@@ -1,14 +1,12 @@
-// File: lib/widgets/custom_bottom_nav.dart
-
 import 'package:e_pact_app/utils/const/colors_const.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class CustomBottomNavBar extends StatelessWidget {
+class CustomEmpBottomNavBar extends StatelessWidget {
   final int currentIndex;
   final Function(int) onTap;
 
-  const CustomBottomNavBar({
+  const CustomEmpBottomNavBar({
     super.key,
     required this.currentIndex,
     required this.onTap,
@@ -35,7 +33,7 @@ class CustomBottomNavBar extends StatelessWidget {
             ),
             IconButton(
               icon: Image.asset(
-                'assets/icons/attendance.png',
+                'assets/icons/announcement.png',
                 color: currentIndex == 1 ? AppColors.primary : Colors.black,
                 height: 24,
               ),
@@ -44,11 +42,11 @@ class CustomBottomNavBar extends StatelessWidget {
             // const SizedBox(width: 48), // space for FAB
             IconButton(
               icon: Image.asset(
-                'assets/icons/announcement.png',
+                'assets/icons/notification.png',
                 color: currentIndex == 2 ? AppColors.primary : Colors.black,
                 height: 24,
               ),
-              onPressed: () => onTap(2),
+              onPressed: () => onTap(3),
             ),
             IconButton(
               icon: Image.asset(
@@ -64,21 +62,3 @@ class CustomBottomNavBar extends StatelessWidget {
     );
   }
 }
-
-// class CenterFAB extends StatelessWidget {
-//   final VoidCallback onTap;
-//   const CenterFAB({super.key, required this.onTap});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return FloatingActionButton(
-//       onPressed: onTap,
-//       backgroundColor: AppColors.primary,
-//       child: Image.asset(
-//         'assets/icons/profile.png',
-//         height: 24,
-//         color: Colors.white,
-//       ),
-//     );
-//   }
-// }

@@ -3,26 +3,34 @@
 import 'package:e_pact_app/features/bottom_navigation/bottom_navigation_bar.dart';
 import 'package:e_pact_app/features/employee/announcements/presentation/announcment_screen.dart';
 import 'package:e_pact_app/features/employee/attendance/presenatation/attendance_screen.dart';
-import 'package:e_pact_app/features/employee/home/view/home_screen.dart';
 import 'package:e_pact_app/features/employee/profile/presentation/profile_screen.dart';
+import 'package:e_pact_app/features/employer/dashboard/profile/view/Employees_screen.dart'
+    show EmployeesScreen;
+import 'package:e_pact_app/features/employer/dashboard/mainscreen/view/Employer_home_screen.dart';
+import 'package:e_pact_app/features/employer/dashboard/announcement%20screen/view/announcement_screen.dart';
+import 'package:e_pact_app/features/employer/dashboard/notification/view/notification_screen.dart';
+import 'package:e_pact_app/features/employer/dashboard/widgets/Bottom_bar_widgets.dart'
+    show CustomEmpBottomNavBar;
 import 'package:e_pact_app/utils/const/colors_const.dart';
+import 'package:e_pact_app/utils/helper_widgets/appbar_custom_widget.dart';
 import 'package:flutter/material.dart';
 
-class MainDashboard extends StatefulWidget {
-  const MainDashboard({super.key});
+class MainDashboards extends StatefulWidget {
+  const MainDashboards({super.key});
 
   @override
-  State<MainDashboard> createState() => _MainDashboardState();
+  State<MainDashboards> createState() => _MainDashboardsState();
 }
 
-class _MainDashboardState extends State<MainDashboard> {
+class _MainDashboardsState extends State<MainDashboards> {
   int _selectedIndex = 0;
 
   final List<Widget> _screens = [
-    const HomeScreen(),
-    const AttendanceScreen(),
-    const AnnouncementScreen(),
-    const ProfileScreen(),
+    EmployerHomeScreen(),
+    EmpAnnouncementScreen(),
+    EmpNotificationScreen(),
+
+    EmployeesScreen(),
   ];
 
   void _onItemTapped(int index) {
@@ -41,12 +49,12 @@ class _MainDashboardState extends State<MainDashboard> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: _screens[_selectedIndex],
-      bottomNavigationBar: CustomBottomNavBar(
+      bottomNavigationBar: CustomEmpBottomNavBar(
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
         selectedItemColor: AppColors.primary,
       ),
-      // floatingActionButton: CenterFAB(onTap: _onFabPressed),
+      // floatingActionButton: Center(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }

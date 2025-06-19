@@ -22,4 +22,7 @@ class RouteList {
   static const String SetPasswordScreen = '/SetPasswordScreen';
   static const String PasswordDoneScreen = '/PasswordDoneScreen';
   static const String Couponapplyscreen = '/Couponapplyscreen';
+  static const String EmplMainDashboards = '/EmplMainDashboards';
+  static const String CheckinMemberscreen = '/CheckinMemberscreen';
+  static const String AddEmployee = '/AddEmployee';
 }
