@@ -25,4 +25,8 @@ class RouteList {
   static const String EmplMainDashboards = '/EmplMainDashboards';
   static const String CheckinMemberscreen = '/CheckinMemberscreen';
   static const String AddEmployee = '/AddEmployee';
+  static const String drawer = '/drawer';
+  static const String language = '/language';
+  static const String settings = '/settings';
+  static const String myprofile = '/myprofile';
 }

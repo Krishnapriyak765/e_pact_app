@@ -1,9 +1,12 @@
+import 'package:e_pact_app/features/employer/dashboard/view/main_dashboard.dart';
 import 'package:e_pact_app/utils/const/colors_const.dart';
 import 'package:e_pact_app/utils/const/route_const.dart';
 import 'package:e_pact_app/utils/helper_widgets/common_text_widget.dart';
 import 'package:e_pact_app/utils/helper_widgets/common_textform_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import '../../../employer/forget_password/view/intinal_screen.dart';
 
 class EmployerLoginScreen extends StatefulWidget {
   const EmployerLoginScreen({super.key});
@@ -19,10 +22,12 @@ class _EmployerLoginScreenState extends State<EmployerLoginScreen> {
   bool isObscure = true;
 
   void _validateAndLogin() {
-    if (_formKey.currentState!.validate()) {
-      // Perform login logic here
-      Get.snackbar("Success", "Logging in...");
-    }
+    // if (_formKey.currentState!.validate()) {
+    // Perform login logic here
+    // Get.snackbar("Success", "Logging in...");
+    // Get.toNamed(RouteList.EmplMainDashboards);
+    Get.to(MainDashboards());
+    // }
   }
 
   @override
@@ -40,6 +45,7 @@ class _EmployerLoginScreenState extends State<EmployerLoginScreen> {
       body: SingleChildScrollView(
         padding: EdgeInsets.symmetric(horizontal: Get.width * 0.06),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             SizedBox(height: Get.height * 0.02),
@@ -48,7 +54,7 @@ class _EmployerLoginScreenState extends State<EmployerLoginScreen> {
               height: Get.height * 0.3,
               fit: BoxFit.contain,
             ),
-            SizedBox(height: Get.height * 0.04),
+            // SizedBox(height: Get.height * 0.04),
 
             /// Login Card
             Container(
@@ -56,10 +62,10 @@ class _EmployerLoginScreenState extends State<EmployerLoginScreen> {
                 horizontal: Get.width * 0.05,
                 vertical: Get.height * 0.03,
               ),
-              decoration: BoxDecoration(
-                border: Border.all(color: AppColors.borderColor),
-                borderRadius: BorderRadius.circular(12),
-              ),
+              // decoration: BoxDecoration(
+              //   border: Border.all(color: AppColors.borderColor),
+              //   borderRadius: BorderRadius.circular(12),
+              // ),
               child: Form(
                 key: _formKey,
                 child: Column(
@@ -71,7 +77,7 @@ class _EmployerLoginScreenState extends State<EmployerLoginScreen> {
                       color: AppColors.black,
                       fontWeight: FontWeight.w600,
                     ),
-                    SizedBox(height: Get.height * 0.002),
+                    // SizedBox(height: Get.height * 0.002),
 
                     /// Username
                     Customtextfield(
@@ -79,7 +85,7 @@ class _EmployerLoginScreenState extends State<EmployerLoginScreen> {
                       hint: "Email",
                       perfixIcon: Icon(Icons.email_outlined),
                     ),
-                    SizedBox(height: Get.height * 0.002),
+                    // SizedBox(height: Get.height * 0.002),
 
                     CommonTextWidgets.textRoboto(
                       text: "password",
@@ -88,10 +94,15 @@ class _EmployerLoginScreenState extends State<EmployerLoginScreen> {
                       fontWeight: FontWeight.w600,
                     ),
 
-                    SizedBox(height: Get.height * 0.003),
+                    // SizedBox(height: Get.height * 0.003),
                     CommonpasswordTextformWidget(hint: "password"),
-                    SizedBox(height: Get.height * 0.003),
-
+                    // SizedBox(height: Get.height * 0.003),
+                    Align(
+                        alignment: Alignment.centerRight,
+                        child: TextButton(onPressed: (){
+                          Get.to(Forgetpasswordscreen());
+                          // Get.toNamed(RouteList.initialForgetpasswordscreen);
+                        }, child: Text("Forget Password?"))),
                     /// Login Button
                     SizedBox(
                       width: double.infinity,

@@ -30,7 +30,7 @@ class _PunchCardState extends State<PunchCard> {
     return Container(
       width: widget.width,
       height: widget.height,
-      padding: const EdgeInsets.only(left: 8, right: 12, top: 12, bottom: 12),
+      // padding: const EdgeInsets.only(left: 8, right: 12, top: 12, bottom: 12),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(16),
@@ -78,14 +78,18 @@ class _PunchCardState extends State<PunchCard> {
                         .toList(),
                   ),
                 ),
+                Align(
+                  alignment: Alignment.bottomRight,
+                  child: IconButton(onPressed: ()=>
+                  // print("object");
+                  Get.toNamed(RouteList.CheckinMemberscreen),
+                    icon:  Icon(Icons.arrow_forward_ios, size: 16),),
+                )
               ],
             ),
           ),
 
-          IconButton(onPressed: ()=>
-            // print("object");
- Get.toNamed(RouteList.CheckinMemberscreen),
-            icon:  Icon(Icons.arrow_forward_ios, size: 16),)
+
         ],
       ),
     );

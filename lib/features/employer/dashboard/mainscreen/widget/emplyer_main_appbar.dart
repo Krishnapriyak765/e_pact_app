@@ -30,13 +30,15 @@ class _EmplyerMainAppbarState extends State<EmplyerMainAppbar> {
   Widget build(BuildContext context) {
     return
        SizedBox(
-        height: 250,
+        height: Get.height*0.25,
+        // height: 250,
 
 // Ensure enough height to accommodate card overflow
         child: Stack(
           children: [
             Container(
-              height: 180,
+              height: Get.height*0.18,
+              // height: Get.height*180,
               width: Get.width,
               decoration: const BoxDecoration(
                 gradient: LinearGradient(
@@ -53,10 +55,11 @@ class _EmplyerMainAppbarState extends State<EmplyerMainAppbar> {
               child: Row(
                 children: [
                   CommonTextWidgets.textRoboto(
-                      text: '"Welcome, ', size: 15, color: AppColors.white),
+                      text: '"Welcome, ', size: Get.height*0.022, color: AppColors.white),
                   CommonTextWidgets.textRoboto(
                       text: showHR ? ' HR! "' : ' GAYATHI! "',
-                      size: 15,
+                      size: Get.height*0.022,
+                      // size:20,
                       color: AppColors.white),
                   const Spacer(),
                   Padding(
@@ -69,9 +72,9 @@ class _EmplyerMainAppbarState extends State<EmplyerMainAppbar> {
 
             // Overlapping Card
             Positioned(
-              top: 90, // Just below the gradient
-              left: 16,
-              right: 16,
+              top: Get.height*0.09, //(90) Just below the gradient
+              left: Get.width*0.027,
+              right: Get.width*0.027,
               child: Card(
                 margin: const EdgeInsets.all(0),
                 elevation: 1,
@@ -79,33 +82,32 @@ class _EmplyerMainAppbarState extends State<EmplyerMainAppbar> {
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 12),
+                  padding:  EdgeInsets.symmetric(vertical: Get.height*0.018, horizontal:Get.width*0.015 ),
                   child: Column(
-                    mainAxisSize: MainAxisSize.min,
+                    mainAxisSize: MainAxisSize.max,
                     children: [
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           CommonTextWidgets.textRoboto(
-                              text: "Total Employee", size: 14, color: AppColors.black),
+                              text: "Total Employee", size: Get.height*0.018, color: AppColors.black),
                           CommonTextWidgets.textRoboto(
-                              text: "Total Present", size: 14, color: AppColors.black),
+                              text: "Total Present", size: Get.height*0.018, color: AppColors.black),
                         ],
                       ),
-                      const SizedBox(height: 8),
+                       SizedBox(height: Get.height*0.008),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           CommonTextWidgets.textRoboto(
                               text: "50",
                               fontWeight: FontWeight.bold,
-                              size: 28,
+                              size: Get.height*0.034,
                               color: AppColors.black),
                           CommonTextWidgets.textRoboto(
                               text: "40",
                               fontWeight: FontWeight.bold,
-                              size: 28,
-                              color: AppColors.black),
+                              size: Get.height*0.034,                              color: AppColors.black),
                         ],
                       ),
                     ],

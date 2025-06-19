@@ -8,6 +8,7 @@ import 'package:e_pact_app/utils/helper_widgets/appbar_custom_widget.dart';
 import 'package:e_pact_app/utils/helper_widgets/common_text_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:percent_indicator/circular_percent_indicator.dart';
 
 class UploadRequiredScreen extends StatelessWidget {
   const UploadRequiredScreen({super.key});
@@ -18,6 +19,13 @@ class UploadRequiredScreen extends StatelessWidget {
       backgroundColor: AppColors.white,
       appBar: CustomAppBar(
         prefixIcon: Icons.menu,
+        onPrefixTap:
+            () => Get.snackbar(
+              'Action Restricted',
+              'Please complete document upload first.',
+              backgroundColor: Colors.white,
+              colorText: Colors.black,
+            ),
         suffixIcon: Icons.notifications_paused,
       ),
 
@@ -27,7 +35,7 @@ class UploadRequiredScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: Get.height * 0.008),
+            SizedBox(height: Get.height * 0.010),
             CommonTextWidgets.textRoboto(
               text: 'Hi ! Vinith',
               size: Get.height * 0.024,
@@ -71,56 +79,75 @@ class UploadRequiredScreen extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    decoration: BoxDecoration(
-                      color: AppColors.red.withOpacity(0.1),
-                      shape: BoxShape.circle,
-                    ),
+                    // decoration: BoxDecoration(
+                    //   color: AppColors.red.withOpacity(0.1),
+                    //   shape: BoxShape.circle,
+                    // ),
                     padding: const EdgeInsets.all(10),
-                    child: const Icon(
-                      Icons.error_outline,
-                      color: AppColors.red,
+                    child: CircularPercentIndicator(
+                      radius: 25.0,
+                      lineWidth: 4.0,
+                      percent: 0.90,
+                      center: Text(
+                        "90%",
+                        style: TextStyle(color: AppColors.red),
+                      ),
+                      progressColor: Colors.red,
                     ),
                   ),
                 ],
               ),
             ),
             SizedBox(height: Get.height * 0.025),
-            CommonTextWidgets.textRoboto(
-              text: 'Boost 90%',
-              size: Get.height * 0.018,
-              color: AppColors.green,
-              fontWeight: FontWeight.w600,
-            ),
-            SizedBox(height: Get.height * 0.005),
-            CommonTextWidgets.textRoboto(
-              text: 'Build trust among recruiters by adding details',
-              size: Get.height * 0.017,
-              color: AppColors.grey,
-            ),
-            SizedBox(height: Get.height * 0.02),
-            Center(
-              child: SizedBox(
-                width: Get.width * 0.5,
-                height: Get.height * 0.06,
-                child: OutlinedButton(
-                  onPressed: () {
-                    // Get.to(() => const DocumentUploadScreen());
-                    Get.toNamed(RouteList.docupload);
-                  },
-                  style: OutlinedButton.styleFrom(
-                    side: const BorderSide(color: AppColors.primary),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Align(
+                      alignment: Alignment.bottomLeft,
+                      child: CommonTextWidgets.textRoboto(
+                        text: 'Boost 90%',
+                        size: Get.height * 0.018,
+                        color: AppColors.green,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    SizedBox(height: Get.height * 0.005),
+                    CommonTextWidgets.textRoboto(
+                      text: 'Build trust among recruiters \n by adding details',
+                      size: Get.height * 0.014,
+                      color: AppColors.grey,
+                    ),
+                    SizedBox(height: Get.height * 0.02),
+                  ],
+                ),
+                SizedBox(height: Get.width * 0.002),
+
+                SizedBox(
+                  width: Get.width * 0.3,
+                  height: Get.height * 0.04,
+                  child: OutlinedButton(
+                    onPressed: () {
+                      // Get.to(() => const DocumentUploadScreen());
+                      Get.toNamed(RouteList.docupload);
+                    },
+                    style: OutlinedButton.styleFrom(
+                      side: const BorderSide(color: AppColors.primary),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
+                    child: CommonTextWidgets.textRoboto(
+                      text: 'Upload',
+                      size: Get.height * 0.018,
+                      color: AppColors.primary,
+                      fontWeight: FontWeight.w600,
                     ),
                   ),
-                  child: CommonTextWidgets.textRoboto(
-                    text: 'Upload',
-                    size: Get.height * 0.018,
-                    color: AppColors.primary,
-                    fontWeight: FontWeight.w600,
-                  ),
                 ),
-              ),
+              ],
             ),
           ],
         ),

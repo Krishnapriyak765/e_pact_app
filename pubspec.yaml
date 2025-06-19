@@ -37,6 +37,7 @@ dependencies:
   get: ^4.7.2
   file_picker: 
   google_fonts: ^6.2.1
+  percent_indicator: ^4.2.5
 
 dev_dependencies:
   flutter_test:

@@ -25,7 +25,7 @@ class CustomEmpBottomNavBar extends StatelessWidget {
           children: [
             IconButton(
               icon: Image.asset(
-                'assets/icons/home.png',
+                'assets/icons/emphome.png',
                 color: currentIndex == 0 ? AppColors.primary : Colors.black,
                 height: 24,
               ),
@@ -33,7 +33,7 @@ class CustomEmpBottomNavBar extends StatelessWidget {
             ),
             IconButton(
               icon: Image.asset(
-                'assets/icons/announcement.png',
+                'assets/icons/empannouncement.png',
                 color: currentIndex == 1 ? AppColors.primary : Colors.black,
                 height: 24,
               ),
@@ -42,7 +42,7 @@ class CustomEmpBottomNavBar extends StatelessWidget {
             // const SizedBox(width: 48), // space for FAB
             IconButton(
               icon: Image.asset(
-                'assets/icons/notification.png',
+                'assets/icons/empnotification.png',
                 color: currentIndex == 2 ? AppColors.primary : Colors.black,
                 height: 24,
               ),
@@ -50,7 +50,7 @@ class CustomEmpBottomNavBar extends StatelessWidget {
             ),
             IconButton(
               icon: Image.asset(
-                'assets/icons/profile.png',
+                'assets/icons/empprofile.png',
                 color: currentIndex == 3 ? AppColors.primary : Colors.black,
                 height: 24,
               ),

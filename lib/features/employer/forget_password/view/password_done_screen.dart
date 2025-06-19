@@ -14,40 +14,27 @@ class PasswordDoneScreen extends StatefulWidget {
 class _PasswordDoneScreenState extends State<PasswordDoneScreen> {
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: CustomAppBar(title: ""),
-        body: SingleChildScrollView(
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: Get.width * 0.03),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              // crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Image.asset(
-                  "assets/images/set_password.png",
-                  height: Get.height * 0.30,
-                  width: Get.width * 0.80,
-                ),
-                // SizedBox(height: Get.height*0.02,),
-                // Card(child: CommonTextWidgets.textRoboto(text: text, size: size, color: color),)
-                Image.asset(
-                  "assets/images/password_done.png",
-                  height: Get.height * 0.30,
-                  width: Get.width * 0.80,
-                ),
-                SizedBox(height: Get.height * 0.02),
-                Custombutton(
-                  buttonname: "Go to Login",
-                  ontap: () {
-                    Get.toNamed(RouteList.emplogin);
-                  },
-                ),
-              ],
-            ),
-          ),
+    return SafeArea(child: Scaffold(
+      appBar: CustomAppBar(title: ""),body: SingleChildScrollView(
+      child: Padding(
+        padding:  EdgeInsets.symmetric(horizontal: Get.width*0.03),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          // crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Image.asset("assets/images/set_password.png",height: Get.height*0.30,width: Get.width*0.80,),
+            // SizedBox(height: Get.height*0.02,),
+            // Card(child: CommonTextWidgets.textRoboto(text: text, size: size, color: color),)
+            Image.asset("assets/images/password_done.png",height: Get.height*0.30,width: Get.width*0.80,),
+            SizedBox(height: Get.height*0.02,),
+            Custombutton(buttonname: "Go to Login", ontap: (){
+              Get.toNamed(RouteList.emplogin);
+            })
+
+          ],
         ),
       ),
-    );
+    ),
+    ));
   }
 }

@@ -100,6 +100,99 @@ class _DocumentUploadScreenState extends State<DocumentUploadScreen> {
     );
   }
 
+  Widget buildUploadCard({
+    required String title,
+    required String buttonText,
+    required String hintText,
+    required String fileHint,
+    required VoidCallback onAttach,
+    required VoidCallback onSend,
+    bool isImage = true,
+  }) {
+    return Container(
+      margin: const EdgeInsets.only(bottom: 16),
+      padding: const EdgeInsets.all(14),
+      decoration: BoxDecoration(
+        color: const Color(0xFFF7F5FB),
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          CommonTextWidgets.textRoboto(
+            text: title,
+            size: 15,
+            fontWeight: FontWeight.w600,
+            color: Colors.black,
+          ),
+          const SizedBox(height: 10),
+          Row(
+            children: [
+              Expanded(
+                child: GestureDetector(
+                  onTap: onAttach,
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 12,
+                      vertical: 10,
+                    ),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      border: Border.all(color: Colors.grey.shade300),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: Row(
+                      children: [
+                        Icon(
+                          isImage ? Icons.image_outlined : Icons.picture_as_pdf,
+                          size: 20,
+                          color: Colors.deepPurple,
+                        ),
+                        const SizedBox(width: 8),
+                        Expanded(
+                          child: CommonTextWidgets.textRoboto(
+                            text: hintText,
+                            size: 13,
+                            color: Colors.deepPurple,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(width: 12),
+              ElevatedButton(
+                onPressed: onSend,
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color(0xFF2E147B),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 20,
+                    vertical: 14,
+                  ),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                ),
+                child: CommonTextWidgets.textRoboto(
+                  text: buttonText,
+                  size: 13,
+                  color: Colors.white,
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 8),
+          CommonTextWidgets.textRoboto(
+            text: fileHint,
+            size: 11,
+            color: Colors.grey,
+          ),
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -154,10 +247,13 @@ class _DocumentUploadScreenState extends State<DocumentUploadScreen> {
                             ]),
                         style: ElevatedButton.styleFrom(
                           backgroundColor: AppColors.primary,
+                          textStyle: TextStyle(color: AppColors.white),
                         ),
-                        child: Text(
-                          'Upload photo',
-                          selectionColor: AppColors.white,
+                        child: CommonTextWidgets.textRoboto(
+                          text: 'Upload Photo',
+                          size: Get.height * 0.016,
+                          color: AppColors.white,
+                          fontWeight: FontWeight.w300,
                         ),
                       ),
                     ],
@@ -166,27 +262,67 @@ class _DocumentUploadScreenState extends State<DocumentUploadScreen> {
               ),
             ),
             const SizedBox(height: 20),
-            _buildUploadTile(
-              'Driving License',
-              'PDF only, max 50MB',
-              drivingLicense,
-              () {
-                _pickFile((f) => setState(() => drivingLicense = f), ['pdf']);
-              },
-              'pdf',
+            // _buildUploadTile(
+            //   'Driving License',
+            //   'PDF only, max 50MB',
+            //   drivingLicense,
+            //   () {
+            //     _pickFile((f) => setState(() => drivingLicense = f), ['pdf']);
+            //   },
+            //   'pdf',
+            // ),
+            buildUploadCard(
+              title: "Driving License",
+              buttonText: "Send",
+              hintText: "Attach the pdf file",
+              fileHint:
+                  "Supported file formats: Pdf, maximum file size upto 50MB",
+              onAttach:
+                  () => _pickFile((f) => setState(() => drivingLicense = f), [
+                    'pdf',
+                  ]), // your logic
+              onSend: () => _pickFile, // your logic
+              isImage: false,
             ),
-            _buildUploadTile('Passport', 'PNG/JPG only, max 2MB', passport, () {
-              _pickFile((f) => setState(() => passport = f), ['jpg', 'png']);
-            }, 'image'),
-            _buildUploadTile(
-              'Signature',
-              'PNG/JPG only, max 2MB',
-              signature,
-              () {
-                _pickFile((f) => setState(() => signature = f), ['jpg', 'png']);
-              },
-              'image',
+            buildUploadCard(
+              title: "Pass port",
+              buttonText: "Send",
+              hintText: "Attach the image file",
+              fileHint:
+                  "Supported file formats: PNG, JPG, or Pdf maximum file size upto 80 KB",
+              onAttach:
+                  () => _pickFile((f) => setState(() => passport = f), [
+                    'jpg',
+                    'png',
+                  ]),
+              onSend: () => _pickFile,
             ),
+
+            buildUploadCard(
+              title: "Signature",
+              buttonText: "Send",
+              hintText: "Attach the image file",
+              fileHint:
+                  "Supported file formats: PNG, JPG, JPEG, GIF maximum file size upto 2MB",
+              onAttach:
+                  () => _pickFile((f) => setState(() => signature = f), [
+                    'jpg',
+                    'png',
+                  ]),
+              onSend: () => _pickFile,
+            ),
+            // _buildUploadTile('Passport', 'PNG/JPG only, max 2MB', passport, () {
+            //   _pickFile((f) => setState(() => passport = f), ['jpg', 'png']);
+            // }, 'image'),
+            // _buildUploadTile(
+            //   'Signature',
+            //   'PNG/JPG only, max 2MB',
+            //   signature,
+            //   () {
+            //     _pickFile((f) => setState(() => signature = f), ['jpg', 'png']);
+            //   },
+            //   'image',
+            // ),
             const SizedBox(height: 24),
             SizedBox(
               width: double.infinity,

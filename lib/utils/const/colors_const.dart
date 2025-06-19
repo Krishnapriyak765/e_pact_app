@@ -14,7 +14,7 @@ class AppColors {
   static const Color bgColor = Colors.white;
   static const Color appbarColor = Color(0xFF140859);
   static const Color appbarbgColor = Color(0xFF540A78);
-
+  static const Color background = Color(0xFFF4F9FB);
   LinearGradient kPurpleLinearGradient = LinearGradient(
     begin: Alignment.centerLeft,
     end: Alignment.centerRight,

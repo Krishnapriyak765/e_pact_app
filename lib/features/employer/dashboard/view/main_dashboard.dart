@@ -1,9 +1,5 @@
 // File: main_dashboard.dart
 
-import 'package:e_pact_app/features/bottom_navigation/bottom_navigation_bar.dart';
-import 'package:e_pact_app/features/employee/announcements/presentation/announcment_screen.dart';
-import 'package:e_pact_app/features/employee/attendance/presenatation/attendance_screen.dart';
-import 'package:e_pact_app/features/employee/profile/presentation/profile_screen.dart';
 import 'package:e_pact_app/features/employer/dashboard/profile/view/Employees_screen.dart'
     show EmployeesScreen;
 import 'package:e_pact_app/features/employer/dashboard/mainscreen/view/Employer_home_screen.dart';
@@ -12,7 +8,6 @@ import 'package:e_pact_app/features/employer/dashboard/notification/view/notific
 import 'package:e_pact_app/features/employer/dashboard/widgets/Bottom_bar_widgets.dart'
     show CustomEmpBottomNavBar;
 import 'package:e_pact_app/utils/const/colors_const.dart';
-import 'package:e_pact_app/utils/helper_widgets/appbar_custom_widget.dart';
 import 'package:flutter/material.dart';
 
 class MainDashboards extends StatefulWidget {

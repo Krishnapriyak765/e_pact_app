@@ -28,25 +28,27 @@ class _PrivacyPolicyCheckboxState extends State<PrivacyPolicyCheckbox> {
               // widget.onChanged(value);
             },
           ),
-          RichText(
-            text: TextSpan(
-              text: 'I agree to the ',
-              style: const TextStyle(color: Colors.black),
-              children: [
-                TextSpan(
-                  text: 'Terms & Conditions',
-                  style: const TextStyle(
-                    color: Colors.blue,
+          Flexible(
+            child: RichText(
+              text: TextSpan(
+                text: 'I agree to the ',
+                style: const TextStyle(color: Colors.black),
+                children: [
+                  TextSpan(
+                    text: 'Terms & Conditions',
+                    style: const TextStyle(
+                      color: Colors.blue,
+                    ),
+                    recognizer: TapGestureRecognizer()
+                      ..onTap = () {
+                        // Open privacy policy URL or page
+                        // Navigator.push(context, MaterialPageRoute(
+                        //   builder: (_) => const PrivacyPolicyPage(),
+                        // ));
+                      },
                   ),
-                  recognizer: TapGestureRecognizer()
-                    ..onTap = () {
-                      // Open privacy policy URL or page
-                      // Navigator.push(context, MaterialPageRoute(
-                      //   builder: (_) => const PrivacyPolicyPage(),
-                      // ));
-                    },
-                ),
-              ],
+                ],
+              ),
             ),
           ),
       RichText(
@@ -56,6 +58,7 @@ class _PrivacyPolicyCheckboxState extends State<PrivacyPolicyCheckbox> {
       children: [
       TextSpan(
       text: '  Privacy Policy ',
+
       style: const TextStyle(
       color: Colors.blue,
       ),

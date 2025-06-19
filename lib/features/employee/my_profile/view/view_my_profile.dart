@@ -1,0 +1,162 @@
+import 'package:e_pact_app/features/employee/my_profile/controller/controller.dart';
+import 'package:e_pact_app/utils/const/colors_const.dart';
+import 'package:e_pact_app/utils/helper_widgets/common_text_widget.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+class MyProfileView extends StatelessWidget {
+  MyProfileView({super.key});
+
+  final MyProfileController controller = Get.put(MyProfileController());
+
+  final List<String> tabs = ['Personal', 'Professional', 'Documents'];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: AppColors.background,
+      appBar: AppBar(
+        leading: const BackButton(color: Colors.black),
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+        centerTitle: true,
+        title: CommonTextWidgets.textRoboto(
+          text: "My Profile",
+          size: 16,
+          fontWeight: FontWeight.w600,
+          color: Colors.black,
+        ),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16),
+        child: Column(
+          children: [
+            SizedBox(height: Get.height * 0.02),
+            _buildTabSelector(),
+            const SizedBox(height: 16),
+            Expanded(
+              child: Obx(
+                () => _buildTabContent(controller.selectedTabIndex.value),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildTabSelector() {
+    return Obx(
+      () => Row(
+        children: List.generate(tabs.length, (index) {
+          final isSelected = controller.selectedTabIndex.value == index;
+          return Expanded(
+            child: GestureDetector(
+              onTap: () => controller.changeTab(index),
+              child: Container(
+                padding: const EdgeInsets.symmetric(vertical: 12),
+                margin: const EdgeInsets.only(right: 4),
+                decoration: BoxDecoration(
+                  color: isSelected ? AppColors.loginbutton : Colors.white,
+                  borderRadius: BorderRadius.circular(6),
+                  border: Border.all(color: AppColors.loginbutton),
+                ),
+                child: Center(
+                  child: CommonTextWidgets.textRoboto(
+                    text: tabs[index],
+                    size: 13,
+                    fontWeight: FontWeight.w500,
+                    color: isSelected ? Colors.white : AppColors.loginbutton,
+                  ),
+                ),
+              ),
+            ),
+          );
+        }),
+      ),
+    );
+  }
+
+  Widget _buildTabContent(int index) {
+    switch (index) {
+      case 0:
+        return _buildPersonalTab();
+      case 1:
+        return _buildProfessionalTab();
+      case 2:
+        return Center(
+          child: CommonTextWidgets.textRoboto(
+            text: "Documents section coming soon",
+            size: 14,
+            color: Colors.grey,
+          ),
+        );
+      default:
+        return const SizedBox.shrink();
+    }
+  }
+
+  Widget _buildPersonalTab() {
+    return Obx(
+      () => ListView.separated(
+        padding: const EdgeInsets.only(top: 8),
+        itemCount: controller.userData.length,
+        separatorBuilder:
+            (_, __) => const Divider(color: Colors.grey, height: 20),
+        itemBuilder: (_, index) {
+          final key = controller.userData.keys.elementAt(index);
+          final value = controller.userData[key]!;
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              CommonTextWidgets.textRoboto(
+                text: key,
+                size: 13,
+                color: Colors.grey[600]!,
+              ),
+              const SizedBox(height: 4),
+              CommonTextWidgets.textRoboto(
+                text: value,
+                size: 14,
+                fontWeight: FontWeight.w600,
+                color: Colors.black,
+              ),
+            ],
+          );
+        },
+      ),
+    );
+  }
+
+  Widget _buildProfessionalTab() {
+    return Obx(
+      () => ListView.separated(
+        padding: const EdgeInsets.only(top: 8),
+        itemCount: controller.professionalData.length,
+        separatorBuilder:
+            (_, __) => const Divider(color: Colors.grey, height: 20),
+        itemBuilder: (_, index) {
+          final key = controller.professionalData.keys.elementAt(index);
+          final value = controller.professionalData[key]!;
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              CommonTextWidgets.textRoboto(
+                text: key,
+                size: 13,
+                color: Colors.grey[600]!,
+              ),
+              const SizedBox(height: 4),
+              CommonTextWidgets.textRoboto(
+                text: value,
+                size: 14,
+                fontWeight: FontWeight.w600,
+                color: Colors.black,
+              ),
+            ],
+          );
+        },
+      ),
+    );
+  }
+}

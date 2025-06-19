@@ -2,9 +2,12 @@ import 'package:e_pact_app/features/employee/home/controller/home_controller.dar
 import 'package:e_pact_app/features/employee/home/model/home_model.dart';
 import 'package:e_pact_app/features/employee/home/view_model/view_model.dart';
 import 'package:e_pact_app/utils/const/colors_const.dart';
+import 'package:e_pact_app/utils/const/route_const.dart';
 import 'package:e_pact_app/utils/helper_widgets/appbar_custom_widget.dart';
 import 'package:e_pact_app/utils/helper_widgets/common_text_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -37,8 +40,16 @@ class _HomeScreenState extends State<HomeScreen> {
     }
 
     return Scaffold(
-      backgroundColor: AppColors.bgColor,
-      appBar: CustomAppBar(prefixIcon: IconData(Icons.menu as int)),
+      backgroundColor: AppColors.background,
+      appBar: CustomAppBar(
+        prefixIcon: Icons.menu,
+        onPrefixTap: () {
+          Scaffold.of(
+            context,
+          ).openDrawer(); // make sure this works inside a Builder or Scaffold
+        },
+      ),
+
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(14.0),
@@ -53,7 +64,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 text: "Today Attendance",
                 size: 16,
                 fontWeight: FontWeight.bold,
-                color: AppColors.primary,
+                color: AppColors.black,
               ),
               const SizedBox(height: 10),
               _buildTodayAttendance(model),
@@ -62,7 +73,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 text: "Your Activity",
                 size: 16,
                 fontWeight: FontWeight.bold,
-                color: AppColors.primary,
+                color: AppColors.black,
               ),
               const SizedBox(height: 10),
               _buildActivity(model),
@@ -74,31 +85,41 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget _buildHeader(AttendanceModel model) {
-    return Row(
+    return Column(
       children: [
-        const CircleAvatar(
-          radius: 28,
-          backgroundImage: AssetImage('assets/images/profile.jpg'),
-        ),
-        const SizedBox(width: 12),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        Row(
+          mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            CommonTextWidgets.textRoboto(
-              text: model.name,
-              size: 16,
-              fontWeight: FontWeight.bold,
-              color: AppColors.primary,
+            Icon(Icons.sticky_note_2_outlined, color: AppColors.primary),
+            Text(' '),
+            Text('Notes', style: TextStyle(color: Colors.blueAccent)),
+          ],
+        ),
+        Row(
+          children: [
+            const CircleAvatar(
+              radius: 28,
+              backgroundImage: AssetImage('assets/icons/profile.png'),
             ),
-            CommonTextWidgets.textRoboto(
-              text: model.role,
-              size: 13,
-              color: AppColors.grey,
+            const SizedBox(width: 10),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                CommonTextWidgets.textRoboto(
+                  text: model.name,
+                  size: 16,
+                  fontWeight: FontWeight.bold,
+                  color: AppColors.primary,
+                ),
+                CommonTextWidgets.textRoboto(
+                  text: model.role,
+                  size: 13,
+                  color: AppColors.grey,
+                ),
+              ],
             ),
           ],
         ),
-        const Spacer(),
-        Icon(Icons.sticky_note_2_outlined, color: AppColors.primary),
       ],
     );
   }
@@ -175,7 +196,19 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Icon(icon, size: 20, color: iconColor),
+          Container(
+            child: Row(
+              children: [
+                Icon(icon, size: 20, color: iconColor),
+                CommonTextWidgets.textRoboto(
+                  text: title,
+                  size: 14,
+                  fontWeight: FontWeight.w400,
+                  color: iconColor,
+                ),
+              ],
+            ),
+          ),
           const SizedBox(height: 8),
           CommonTextWidgets.textRoboto(
             text: value,
@@ -210,7 +243,7 @@ class _HomeScreenState extends State<HomeScreen> {
           model.toCheckOut,
           "",
           "",
-          Colors.purple,
+          Colors.black,
         ),
       ],
     );

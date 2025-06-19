@@ -1,7 +1,8 @@
 import 'package:e_pact_app/features/bottom_navigation/main_dashboard.dart';
-import 'package:e_pact_app/features/employee/announcements/presentation/announcment_screen.dart';
-import 'package:e_pact_app/features/employee/attendance/presenatation/attendance_screen.dart';
+import 'package:e_pact_app/features/employee/announcements/presentation/view_announcement.dart';
+import 'package:e_pact_app/features/employee/attendance_leave/view/leave_view.dart';
 import 'package:e_pact_app/features/employee/document_upload_screen/presentation/document_upload_screen.dart';
+import 'package:e_pact_app/features/employee/my_profile/view/view_my_profile.dart';
 import 'package:e_pact_app/features/employee/profile/presentation/profile_screen.dart';
 import 'package:e_pact_app/features/employee/upload_required_screen/presentation/upload_require_screen.dart';
 import 'package:e_pact_app/features/employer/choose_plan/view/discount_details.dart';
@@ -21,6 +22,7 @@ import 'package:e_pact_app/features/login_screen/presentation/screens/employer_l
 import 'package:e_pact_app/features/login_screen/presentation/screens/login_screen.dart';
 import 'package:e_pact_app/features/role_initial_screen/view/role_selection.dart';
 import 'package:e_pact_app/utils/const/route_const.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
 
 class Routes {
@@ -30,9 +32,9 @@ class Routes {
     GetPage(name: RouteList.dashboard1, page: () => UploadRequiredScreen()),
     GetPage(name: RouteList.docupload, page: () => DocumentUploadScreen()),
     GetPage(name: RouteList.navigation, page: () => MainDashboard()),
-    GetPage(name: RouteList.announcement, page: () => AnnouncementScreen()),
-    GetPage(name: RouteList.profile, page: () => ProfileScreen()),
-    GetPage(name: RouteList.attendance, page: () => AttendanceScreen()),
+    GetPage(name: RouteList.announcement, page: () => AnnouncementsView()),
+    GetPage(name: RouteList.profile, page: () => ProfileView()),
+    GetPage(name: RouteList.attendance, page: () => LeaveView()),
     GetPage(name: RouteList.emplogin, page: () => EmployerLoginScreen()),
     GetPage(name: RouteList.signup, page: () => EmpSignupscreen()),
     GetPage(name: RouteList.addinfo, page: () => AddtionalInformation()),
@@ -59,5 +61,8 @@ class Routes {
       page: () => CheckinMemberscreen(),
     ),
     GetPage(name: RouteList.AddEmployee, page: () => AddEmployee()),
+    GetPage(name: RouteList.drawer, page: () => Drawer()),
+    GetPage(name: RouteList.myprofile, page: () => MyProfileView()),
+    // GetPage(name: RouteList.drawer, page: () => Drawer()),
   ];
 }

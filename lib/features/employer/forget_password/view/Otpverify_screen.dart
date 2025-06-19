@@ -17,49 +17,33 @@ class Otpverifyscreen extends StatefulWidget {
 class _OtpverifyscreenState extends State<Otpverifyscreen> {
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: CustomAppBar(title: ""),
-        body: Padding(
-          padding: EdgeInsets.symmetric(horizontal: Get.width * 0.10),
-          child: Column(
-            // crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              CommonTextWidgets.textRoboto(
-                text: "OTP",
-                fontWeight: FontWeight.bold,
-                size: 18,
-                color: AppColors.black,
-              ),
-              SizedBox(height: Get.height * 0.04),
-              CommonTextWidgets.textRoboto(
-                text:
-                    "We send you Email please check your Mail and Complete OTP Code",
-                size: 17,
-                color: AppColors.black,
-              ),
-              SizedBox(height: Get.height * 0.04),
-              OtpInputBox(),
-              SizedBox(height: Get.height * 0.04),
-              Custombutton(
-                buttonname: "Continue",
-                ontap: () {
-                  Get.toNamed(RouteList.SetPasswordScreen);
-                  print("object");
-                },
-              ),
+    return SafeArea(child: Scaffold(
+      appBar: CustomAppBar(title: ""),
+      body: Padding(
+        padding:  EdgeInsets.symmetric(horizontal: Get.width*0.10),
+        child: Column(
+          // crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            CommonTextWidgets.textRoboto(text: "OTP",fontWeight:FontWeight.bold , size: 18, color: AppColors.black),
+            SizedBox(height: Get.height*0.04,)
+            , CommonTextWidgets.textRoboto(text: "We send you Email please check your Mail and Complete OTP Code" , size: 17, color: AppColors.black)
+            ,            SizedBox(height: Get.height*0.04,),
+            OtpInputBox(),
+            SizedBox(height: Get.height*0.04,),
+            Custombutton(buttonname: "Continue", ontap: (){
+              Get.toNamed(RouteList.SetPasswordScreen);
+              print("object");
+            })
+            // _onOtpCompleted)
 
-              // _onOtpCompleted)
-            ],
-          ),
+          ],
         ),
       ),
-    );
+    ));
   }
 }
-
-void _onOtpCompleted(String otp) {
-  print("Entered OTP: $otp");
-  // You can now verify it or send to API
-}
+// void _onOtpCompleted(String otp) {
+//   print("Entered OTP: $otp");
+//   // You can now verify it or send to API
+// }

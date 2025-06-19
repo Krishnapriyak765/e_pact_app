@@ -9,7 +9,7 @@ class Carduiscreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double cardWidth = Get.width * 0.45;
-    double cardHeight = Get.height * 0.35;
+    double cardHeight = Get.height * 0.20;
     return Padding(
       padding:  EdgeInsets.symmetric(horizontal: Get.width*0.02),
       child: Column(
