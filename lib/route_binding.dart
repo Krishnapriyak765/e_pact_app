@@ -1,7 +1,7 @@
 import 'package:e_pact_app/features/bottom_navigation/main_dashboard.dart';
 import 'package:e_pact_app/features/employee/announcements/presentation/view_announcement.dart';
 import 'package:e_pact_app/features/employee/attendance_leave/view/leave_view.dart';
-import 'package:e_pact_app/features/employee/document_upload_screen/presentation/document_upload_screen.dart';
+import 'package:e_pact_app/features/employee/document_upload_screen/view/document_upload_screen.dart';
 import 'package:e_pact_app/features/employee/my_profile/view/view_my_profile.dart';
 import 'package:e_pact_app/features/employee/profile/presentation/profile_screen.dart';
 import 'package:e_pact_app/features/employee/upload_required_screen/presentation/upload_require_screen.dart';

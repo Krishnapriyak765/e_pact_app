@@ -84,13 +84,7 @@ class MyProfileView extends StatelessWidget {
       case 1:
         return _buildProfessionalTab();
       case 2:
-        return Center(
-          child: CommonTextWidgets.textRoboto(
-            text: "Documents section coming soon",
-            size: 14,
-            color: Colors.grey,
-          ),
-        );
+        return _buildDocumentTab();
       default:
         return const SizedBox.shrink();
     }
@@ -154,6 +148,38 @@ class MyProfileView extends StatelessWidget {
                 color: Colors.black,
               ),
             ],
+          );
+        },
+      ),
+    );
+  }
+
+  Widget _buildDocumentTab() {
+    return Obx(
+      () => ListView.separated(
+        itemCount: controller.documentsData.length,
+        padding: const EdgeInsets.only(top: 8),
+        separatorBuilder: (_, __) => const Divider(height: 1),
+        itemBuilder: (_, index) {
+          final doc = controller.documentsData[index];
+          return ListTile(
+            onTap: () => controller.openPdf(doc),
+            leading: const CircleAvatar(
+              radius: 18,
+              backgroundColor: Color(0xFFF2F2F2),
+              child: Icon(Icons.picture_as_pdf, color: Colors.grey),
+            ),
+            title: CommonTextWidgets.textRoboto(
+              text: doc,
+              size: 14,
+              fontWeight: FontWeight.w600,
+              color: Colors.black,
+            ),
+            trailing: const Icon(Icons.file_open_outlined, color: Colors.grey),
+            contentPadding: const EdgeInsets.symmetric(
+              horizontal: 12,
+              vertical: 6,
+            ),
           );
         },
       ),

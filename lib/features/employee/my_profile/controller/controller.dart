@@ -1,3 +1,4 @@
+import 'package:e_pact_app/features/employee/my_profile/pdf_view/pdf_view.dart';
 import 'package:get/get.dart';
 
 class MyProfileController extends GetxController {
@@ -27,4 +28,25 @@ class MyProfileController extends GetxController {
         'Department': 'Design',
         'Office Time': '10:00 am to 06:00 pm',
       }.obs;
+  final documentsData =
+      ['Offer Letter', 'NDA', 'Driving License', 'Passport'].obs;
+
+  void openPdf(String docName) {
+    // Example dummy mapping
+    final Map<String, String> mockUrls = {
+      'Offer Letter':
+          'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf',
+      'NDA': 'https://www.africau.edu/images/default/sample.pdf',
+      'Driving License':
+          'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf',
+      'Passport': 'https://www.africau.edu/images/default/sample.pdf',
+    };
+
+    final url = mockUrls[docName];
+    if (url != null) {
+      Get.to(() => PdfViewScreen(pdfUrl: url, title: docName));
+    } else {
+      Get.snackbar("Error", "PDF not found");
+    }
+  }
 }
