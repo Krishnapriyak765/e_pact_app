@@ -17,7 +17,7 @@ class AnnouncementsView extends StatelessWidget {
         automaticallyImplyLeading: true,
         centerTitle: true,
         elevation: 0,
-        leading: Icon(Icons.arrow_back_ios),
+        leading: Icon(Icons.arrow_back_ios, color: AppColors.white),
         title: CommonTextWidgets.textRoboto(
           text: "Announcements",
           size: 16,
@@ -36,7 +36,10 @@ class AnnouncementsView extends StatelessWidget {
         ),
         actions: [
           IconButton(
-            icon: const Icon(Icons.sync, color: Colors.white),
+            icon: const Icon(
+              Icons.notifications_none_rounded,
+              color: Colors.white,
+            ),
             onPressed: () => controller.fetchAnnouncements(),
           ),
         ],

@@ -48,6 +48,7 @@ class _HomeScreenState extends State<HomeScreen> {
             context,
           ).openDrawer(); // make sure this works inside a Builder or Scaffold
         },
+        suffixIcon: Icons.notifications_none_rounded,
       ),
 
       body: SafeArea(
@@ -87,13 +88,22 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget _buildHeader(AttendanceModel model) {
     return Column(
       children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            Icon(Icons.sticky_note_2_outlined, color: AppColors.primary),
-            Text(' '),
-            Text('Notes', style: TextStyle(color: Colors.blueAccent)),
-          ],
+        Align(
+          alignment: Alignment.bottomRight,
+          child: Container(
+            width: Get.width * 0.25,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(3),
+              border: Border.all(color: AppColors.loginbutton),
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Image(image: AssetImage('assets/images/note.png')),
+                Text('Notes ', style: TextStyle(color: Colors.blueAccent)),
+              ],
+            ),
+          ),
         ),
         Row(
           children: [
@@ -107,14 +117,15 @@ class _HomeScreenState extends State<HomeScreen> {
               children: [
                 CommonTextWidgets.textRoboto(
                   text: model.name,
-                  size: 16,
+                  size: 17,
                   fontWeight: FontWeight.bold,
-                  color: AppColors.primary,
+                  color: AppColors.black,
                 ),
                 CommonTextWidgets.textRoboto(
                   text: model.role,
                   size: 13,
                   color: AppColors.grey,
+                  letterSpacing: 1,
                 ),
               ],
             ),
@@ -129,15 +140,28 @@ class _HomeScreenState extends State<HomeScreen> {
       width: double.infinity,
       height: 50,
       decoration: BoxDecoration(
-        color: AppColors.primary,
-        borderRadius: BorderRadius.circular(12),
+        color: AppColors.loginbutton,
+        borderRadius: BorderRadius.circular(10),
       ),
       alignment: Alignment.center,
-      child: CommonTextWidgets.textRoboto(
-        text: "Swipe to check Out",
-        size: 14,
-        fontWeight: FontWeight.w500,
-        color: Colors.white,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              color: AppColors.white,
+              borderRadius: BorderRadius.circular(4),
+            ),
+            child: Icon(Icons.arrow_forward, color: AppColors.black),
+          ),
+          CommonTextWidgets.textRoboto(
+            text: "Swipe to check Out",
+            size: 14,
+            fontWeight: FontWeight.w500,
+            color: Colors.white,
+          ),
+          SizedBox(),
+        ],
       ),
     );
   }
@@ -148,32 +172,32 @@ class _HomeScreenState extends State<HomeScreen> {
       runSpacing: 10,
       children: [
         _buildInfoCard(
-          "Check In",
+          "  Check In",
           model.checkInTime,
           "On Time",
           Icons.login,
           Colors.green,
         ),
         _buildInfoCard(
-          "Check Out",
+          "  Check Out",
           model.checkOutTime,
           "Go Home",
           Icons.logout,
           Colors.red,
         ),
         _buildInfoCard(
-          "Break Time",
+          "  Break Time",
           model.breakTime,
           "Avg Time 30 min",
           Icons.coffee,
-          AppColors.loginbutton,
+          AppColors.black,
         ),
         _buildInfoCard(
-          "Total Days",
+          "  Total Days",
           "${model.totalDays}",
           "Working Days",
           Icons.calendar_today,
-          AppColors.loginbutton,
+          AppColors.black,
         ),
       ],
     );
@@ -234,7 +258,7 @@ class _HomeScreenState extends State<HomeScreen> {
           "Check In Hours",
           model.checkInHours,
           "Total Hours",
-          "08 Hours",
+          "",
           Colors.green,
         ),
         const SizedBox(height: 10),
@@ -265,7 +289,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       child: Row(
         children: [
-          Icon(Icons.access_time, size: 20, color: color),
+          Image.asset('assets/icons/home_arrow_blue.png'),
           const SizedBox(width: 8),
           Expanded(
             child: Column(
@@ -277,6 +301,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   color: color,
                   fontWeight: FontWeight.bold,
                 ),
+
                 if (subtitle.isNotEmpty)
                   CommonTextWidgets.textRoboto(
                     text: subtitle,

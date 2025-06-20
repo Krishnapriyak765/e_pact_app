@@ -24,7 +24,15 @@ class LeaveView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.background,
-      appBar: CustomAppBar(),
+      appBar: CustomAppBar(
+        prefixIcon: Icons.menu,
+        onPrefixTap: () {
+          Scaffold.of(
+            context,
+          ).openDrawer(); // make sure this works inside a Builder or Scaffold
+        },
+        suffixIcon: Icons.notifications_none_rounded,
+      ),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(14.0),
