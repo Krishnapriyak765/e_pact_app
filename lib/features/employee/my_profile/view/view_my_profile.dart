@@ -16,22 +16,32 @@ class MyProfileView extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.background,
       appBar: AppBar(
-        leading: const BackButton(color: Colors.black),
+        leading: const BackButton(color: AppColors.white),
         elevation: 0,
-        backgroundColor: Colors.transparent,
-        centerTitle: true,
-        title: CommonTextWidgets.textRoboto(
-          text: "My Profile",
-          size: 16,
-          fontWeight: FontWeight.w600,
-          color: Colors.black,
-        ),
+        backgroundColor: AppColors.background,
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Column(
           children: [
-            SizedBox(height: Get.height * 0.02),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                InkWell(
+                  onTap: () => Get.back(),
+                  child: Icon(Icons.arrow_back_ios, color: AppColors.black),
+                ),
+                CommonTextWidgets.textRoboto(
+                  text: 'My Profile',
+                  fontWeight: FontWeight.w500,
+                  size: 18,
+                  color: AppColors.notitext,
+                ),
+                SizedBox(),
+                SizedBox(),
+              ],
+            ),
+            SizedBox(height: Get.height * 0.03),
             _buildTabSelector(),
             const SizedBox(height: 16),
             Expanded(
@@ -112,7 +122,7 @@ class MyProfileView extends StatelessWidget {
               CommonTextWidgets.textRoboto(
                 text: value,
                 size: 14,
-                fontWeight: FontWeight.w600,
+                fontWeight: FontWeight.w400,
                 color: Colors.black,
               ),
             ],
@@ -144,7 +154,7 @@ class MyProfileView extends StatelessWidget {
               CommonTextWidgets.textRoboto(
                 text: value,
                 size: 14,
-                fontWeight: FontWeight.w600,
+                fontWeight: FontWeight.w400,
                 color: Colors.black,
               ),
             ],

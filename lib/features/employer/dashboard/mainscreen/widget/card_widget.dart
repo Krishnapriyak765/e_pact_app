@@ -9,6 +9,7 @@ class PunchCard extends StatefulWidget {
   final Color color;
   final double width;
   final double height;
+  final String? text;
 
   const PunchCard({
     super.key,
@@ -17,7 +18,7 @@ class PunchCard extends StatefulWidget {
     required this.users,
     required this.color,
     required this.width,
-    required this.height,
+    required this.height, this.text,
   });
 
   @override
@@ -68,13 +69,15 @@ class _PunchCardState extends State<PunchCard> {
                     runSpacing: 8,
                     children: widget.users
                         .map((imgUrl) => CircleAvatar(
-                      radius: widget.width * 0.07,
+                      radius: widget.width * 0.10,
                       backgroundColor: widget.color,
                       child: CircleAvatar(
-                        radius: widget.width * 0.065,
+                        radius: widget.width * 0.095,
                         backgroundImage: NetworkImage(imgUrl),
                       ),
-                    ))
+
+                    ),
+                    )
                         .toList(),
                   ),
                 ),

@@ -35,14 +35,14 @@ class UploadRequiredScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: Get.height * 0.010),
+            SizedBox(height: Get.height * 0.020),
             CommonTextWidgets.textRoboto(
               text: 'Hi ! Vinith',
-              size: Get.height * 0.024,
+              size: Get.height * 0.026,
               color: AppColors.black,
               fontWeight: FontWeight.w600,
             ),
-            SizedBox(height: Get.height * 0.008),
+            SizedBox(height: Get.height * 0.01),
             Container(
               width: double.infinity,
               padding: const EdgeInsets.all(16),
@@ -51,7 +51,7 @@ class UploadRequiredScreen extends StatelessWidget {
                 borderRadius: BorderRadius.circular(12),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.grey.withOpacity(0.15),
+                    color: Colors.black.withOpacity(0.15),
                     blurRadius: 8,
                     offset: const Offset(0, 4),
                   ),
@@ -66,13 +66,13 @@ class UploadRequiredScreen extends StatelessWidget {
                         CommonTextWidgets.textRoboto(
                           text: "Vinith's profile",
                           size: Get.height * 0.02,
-                          color: AppColors.primary,
+                          color: AppColors.loginbutton,
                           fontWeight: FontWeight.w500,
                         ),
                         SizedBox(height: Get.height * 0.004),
                         CommonTextWidgets.textRoboto(
                           text: "Missing Details",
-                          size: Get.height * 0.017,
+                          size: Get.height * 0.014,
                           color: AppColors.black,
                         ),
                       ],
@@ -85,8 +85,8 @@ class UploadRequiredScreen extends StatelessWidget {
                     // ),
                     padding: const EdgeInsets.all(10),
                     child: CircularPercentIndicator(
-                      radius: 25.0,
-                      lineWidth: 4.0,
+                      radius: 23.0,
+                      lineWidth: 3.0,
                       percent: 0.90,
                       center: Text(
                         "90%",
@@ -98,21 +98,20 @@ class UploadRequiredScreen extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(height: Get.height * 0.025),
+            SizedBox(height: Get.height * 0.03),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Column(
                   mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Align(
-                      alignment: Alignment.bottomLeft,
-                      child: CommonTextWidgets.textRoboto(
-                        text: 'Boost 90%',
-                        size: Get.height * 0.018,
-                        color: AppColors.green,
-                        fontWeight: FontWeight.w600,
-                      ),
+                    CommonTextWidgets.textRoboto(
+                      text: 'Boost 90%',
+                      size: Get.height * 0.018,
+                      color: AppColors.green,
+                      fontWeight: FontWeight.w600,
+                      textAlign: TextAlign.left,
                     ),
                     SizedBox(height: Get.height * 0.005),
                     CommonTextWidgets.textRoboto(

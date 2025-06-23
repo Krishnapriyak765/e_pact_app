@@ -29,4 +29,6 @@ class RouteList {
   static const String language = '/language';
   static const String settings = '/settings';
   static const String myprofile = '/myprofile';
+  static const String notification = '/notification';
+  static const String applyleave = '/applyleave';
 }

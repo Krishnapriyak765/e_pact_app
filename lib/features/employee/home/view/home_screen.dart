@@ -49,6 +49,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ).openDrawer(); // make sure this works inside a Builder or Scaffold
         },
         suffixIcon: Icons.notifications_none_rounded,
+        onSuffixTap: () => Get.toNamed(RouteList.notification),
       ),
 
       body: SafeArea(
@@ -91,17 +92,20 @@ class _HomeScreenState extends State<HomeScreen> {
         Align(
           alignment: Alignment.bottomRight,
           child: Container(
-            width: Get.width * 0.25,
+            width: Get.width * 0.22,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(3),
               border: Border.all(color: AppColors.loginbutton),
             ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Image(image: AssetImage('assets/images/note.png')),
-                Text('Notes ', style: TextStyle(color: Colors.blueAccent)),
-              ],
+            child: Padding(
+              padding: const EdgeInsets.all(5.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Image(image: AssetImage('assets/images/note.png')),
+                  Text('Notes ', style: TextStyle(color: Colors.blueAccent)),
+                ],
+              ),
             ),
           ),
         ),
@@ -117,7 +121,7 @@ class _HomeScreenState extends State<HomeScreen> {
               children: [
                 CommonTextWidgets.textRoboto(
                   text: model.name,
-                  size: 17,
+                  size: 19,
                   fontWeight: FontWeight.bold,
                   color: AppColors.black,
                 ),
@@ -138,7 +142,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget _buildSwipeButton() {
     return Container(
       width: double.infinity,
-      height: 50,
+      height: 53,
       decoration: BoxDecoration(
         color: AppColors.loginbutton,
         borderRadius: BorderRadius.circular(10),
@@ -148,15 +152,17 @@ class _HomeScreenState extends State<HomeScreen> {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Container(
+            height: 32,
+            width: 40,
             decoration: BoxDecoration(
               color: AppColors.white,
-              borderRadius: BorderRadius.circular(4),
+              borderRadius: BorderRadius.circular(5),
             ),
             child: Icon(Icons.arrow_forward, color: AppColors.black),
           ),
           CommonTextWidgets.textRoboto(
             text: "Swipe to check Out",
-            size: 14,
+            size: 16,
             fontWeight: FontWeight.w500,
             color: Colors.white,
           ),

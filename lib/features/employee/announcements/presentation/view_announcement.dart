@@ -28,7 +28,7 @@ class AnnouncementsView extends StatelessWidget {
         flexibleSpace: Container(
           decoration: const BoxDecoration(
             gradient: LinearGradient(
-              colors: [Color(0xFF090019), Color(0xFF3B225C), Color(0xFF0F4A86)],
+              colors: [Color(0xFF140859), Color(0xFF540A78)],
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
             ),

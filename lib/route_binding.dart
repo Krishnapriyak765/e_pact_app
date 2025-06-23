@@ -1,16 +1,18 @@
 import 'package:e_pact_app/features/bottom_navigation/main_dashboard.dart';
 import 'package:e_pact_app/features/employee/announcements/presentation/view_announcement.dart';
+import 'package:e_pact_app/features/employee/attendance_leave/view/apply_leave_view.dart';
 import 'package:e_pact_app/features/employee/attendance_leave/view/leave_view.dart';
 import 'package:e_pact_app/features/employee/document_upload_screen/view/document_upload_screen.dart';
 import 'package:e_pact_app/features/employee/my_profile/view/view_my_profile.dart';
+import 'package:e_pact_app/features/employee/notification/view/notification_view.dart';
 import 'package:e_pact_app/features/employee/profile/presentation/profile_screen.dart';
 import 'package:e_pact_app/features/employee/upload_required_screen/presentation/upload_require_screen.dart';
 import 'package:e_pact_app/features/employer/choose_plan/view/discount_details.dart';
 import 'package:e_pact_app/features/employer/choose_plan/view/discount_screen.dart';
 import 'package:e_pact_app/features/employer/choose_plan/view/payment_screen.dart';
 import 'package:e_pact_app/features/employer/choose_plan/view/plan.dart';
-import 'package:e_pact_app/features/employer/dashboard/mainscreen/view/add_employee.dart';
-import 'package:e_pact_app/features/employer/dashboard/mainscreen/view/checkin_member.dart';
+import 'package:e_pact_app/features/employer/dashboard/mainscreen/drawer/addemployee/view/add_employee.dart';
+import 'package:e_pact_app/features/employer/dashboard/mainscreen/view/punchin_memeber_ui.dart';
 import 'package:e_pact_app/features/employer/dashboard/view/main_dashboard.dart';
 import 'package:e_pact_app/features/employer/forget_password/view/Otpverify_screen.dart';
 import 'package:e_pact_app/features/employer/forget_password/view/intinal_screen.dart';
@@ -63,6 +65,7 @@ class Routes {
     GetPage(name: RouteList.AddEmployee, page: () => AddEmployee()),
     GetPage(name: RouteList.drawer, page: () => Drawer()),
     GetPage(name: RouteList.myprofile, page: () => MyProfileView()),
-    // GetPage(name: RouteList.drawer, page: () => Drawer()),
+    GetPage(name: RouteList.notification, page: () => NotificationScreen()),
+    GetPage(name: RouteList.applyleave, page: () => ApplyLeaveView()),
   ];
 }

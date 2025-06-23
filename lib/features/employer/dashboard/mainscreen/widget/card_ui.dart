@@ -8,8 +8,8 @@ class Carduiscreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double cardWidth = Get.width * 0.45;
-    double cardHeight = Get.height * 0.20;
+    double cardWidth = Get.width * 0.34;
+    double cardHeight = Get.height * 0.14;
     return Padding(
       padding:  EdgeInsets.symmetric(horizontal: Get.width*0.02),
       child: Column(
@@ -35,7 +35,7 @@ class Carduiscreen extends StatelessWidget {
                     height: cardHeight,
                   ),
                 ),SizedBox(
-                  width: Get.width*0.10,
+                  width: Get.width*0.07,
                 ),
                 Expanded(
                   child: PunchCard(
@@ -78,7 +78,7 @@ class Carduiscreen extends StatelessWidget {
                     height: cardHeight,
                   ),
                 ),SizedBox(
-                  width: Get.width*0.10,
+                  width: Get.width*0.07,
                 ),
                 Expanded(
                   child: PunchCard(
@@ -119,7 +119,7 @@ class Carduiscreen extends StatelessWidget {
                     height: cardHeight,
                   ),
                 ),SizedBox(
-                  width: Get.width*0.10,
+                  width: Get.width*0.07,
                 ),
                 Expanded(
                   child: PunchCard(
@@ -128,6 +128,7 @@ class Carduiscreen extends StatelessWidget {
                     users: [
                       'https://randomuser.me/api/portraits/women/20.jpg'
                     ],
+                    text: 'Birthday',
                     color: Colors.green,
                     width: cardWidth,
                     height: cardHeight,

@@ -7,6 +7,8 @@ import 'package:e_pact_app/utils/helper_widgets/custom_otp_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../../utils/helper_widgets/appbar_widgets.dart' show AppbarWidgets;
+
 class Otpverifyscreen extends StatefulWidget {
   const Otpverifyscreen({super.key});
 
@@ -18,27 +20,34 @@ class _OtpverifyscreenState extends State<Otpverifyscreen> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(child: Scaffold(
-      appBar: CustomAppBar(title: ""),
-      body: Padding(
-        padding:  EdgeInsets.symmetric(horizontal: Get.width*0.10),
-        child: Column(
-          // crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            CommonTextWidgets.textRoboto(text: "OTP",fontWeight:FontWeight.bold , size: 18, color: AppColors.black),
-            SizedBox(height: Get.height*0.04,)
-            , CommonTextWidgets.textRoboto(text: "We send you Email please check your Mail and Complete OTP Code" , size: 17, color: AppColors.black)
-            ,            SizedBox(height: Get.height*0.04,),
-            OtpInputBox(),
-            SizedBox(height: Get.height*0.04,),
-            Custombutton(buttonname: "Continue", ontap: (){
-              Get.toNamed(RouteList.SetPasswordScreen);
-              print("object");
-            })
-            // _onOtpCompleted)
+      // appBar: CustomAppBar(title: ""),
+      body: Column(
+        children: [
+          AppbarWidgets(titletext: ""),
 
-          ],
-        ),
+          Padding(
+            padding:  EdgeInsets.symmetric(horizontal: Get.width*0.10),
+            child: Column(
+              children: [
+                SizedBox(
+                  height: Get.height*0.12,
+                ),
+                CommonTextWidgets.textRoboto(text: "OTP",fontWeight:FontWeight.bold , size: 30, color: AppColors.black),
+                SizedBox(height: Get.height*0.03,)
+                , CommonTextWidgets.textRoboto(text: "We send you Email please check your Mail and Complete OTP Code" , size: 17, color: Colors.blueGrey)
+                ,            SizedBox(height: Get.height*0.04,),
+                OtpInputBox(),
+                SizedBox(height: Get.height*0.04,),
+                Custombuttons(buttonname: "Continue", ontap: (){
+                  Get.toNamed(RouteList.SetPasswordScreen);
+                  print("object");
+                })
+                // _onOtpCompleted)
+
+              ],
+            ),
+          ),
+        ],
       ),
     ));
   }

@@ -1,3 +1,4 @@
+import 'package:e_pact_app/utils/const/colors_const.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -17,63 +18,42 @@ class _PrivacyPolicyCheckboxState extends State<PrivacyPolicyCheckbox> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding:
-      EdgeInsets.symmetric(horizontal: Get.width*0.10),
+      padding: EdgeInsets.only(left: Get.height * 0.003),
       child: Row(
+
         children: [
           Checkbox(
             value: isChecked,
             onChanged: (value) {
               setState(() => isChecked = value ?? false);
-              // widget.onChanged(value);
             },
           ),
-          Flexible(
-            child: RichText(
-              text: TextSpan(
-                text: 'I agree to the ',
-                style: const TextStyle(color: Colors.black),
-                children: [
-                  TextSpan(
-                    text: 'Terms & Conditions',
-                    style: const TextStyle(
-                      color: Colors.blue,
-                    ),
-                    recognizer: TapGestureRecognizer()
-                      ..onTap = () {
-                        // Open privacy policy URL or page
-                        // Navigator.push(context, MaterialPageRoute(
-                        //   builder: (_) => const PrivacyPolicyPage(),
-                        // ));
-                      },
-                  ),
-                ],
-              ),
+          Expanded(
+            child: Wrap(
+              children: [
+                Text(
+                  'I agree to the ',
+                  style: TextStyle(color: Colors.black),
+                ),
+                Text(
+                  'Terms & Conditions',
+                  style: TextStyle(color: AppColors.appbarbgColor),
+                ),
+                Text(
+                  ' and ',
+                  style: TextStyle(color: Colors.black),
+                ),
+                Text(
+                  'Privacy Policy',
+                  style: TextStyle(color: AppColors.appbarbgColor),
+                ),
+              ],
             ),
           ),
-      RichText(
-      text: TextSpan(
-      text: ' and ',
-      style: const TextStyle(color: Colors.black),
-      children: [
-      TextSpan(
-      text: '  Privacy Policy ',
-
-      style: const TextStyle(
-      color: Colors.blue,
+        ],
       ),
-      recognizer: TapGestureRecognizer()
-      ..onTap = () {
-      // Open privacy policy URL or page
-      // Navigator.push(context, MaterialPageRoute(
-      //   builder: (_) => const PrivacyPolicyPage(),
-      // ));
-      },
-      ),
-      ],
-      ),
-      )]),
     );
+
   }
 }
 

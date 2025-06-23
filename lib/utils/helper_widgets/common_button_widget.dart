@@ -67,29 +67,7 @@ class _CustombuttonState extends State<Custombutton> {
   @override
   Widget build(BuildContext context) {
     return
-      /// Login Button
-      // SizedBox(
-      //   width: double.infinity,
-      //   height: Get.height * 0.085,
-      //   child: ElevatedButton(
-      //     style: ElevatedButton.styleFrom(
-      //       shape: RoundedRectangleBorder(
-      //         borderRadius: BorderRadius.circular(10),
-      //
-      //       ),
-      //       // backgroundColor: Colors.blueAccent,
-      //       backgroundColor: AppColors.loginbutton,
-      //     ),
-      //     onPressed: widget.ontap(),
-      //     child: CommonTextWidgets.textRoboto(
-      //       text: widget.buttonname,
-      //       size: Get.height * 0.025,
-      //       color: AppColors.white,
-      //       fontWeight: FontWeight.w600,
-      //     ),
-      //   ),
-      // );
-      SizedBox(
+         SizedBox(
         width: double.infinity,
         height: Get.height * 0.070,
         child: ElevatedButton(
@@ -102,9 +80,6 @@ class _CustombuttonState extends State<Custombutton> {
             backgroundColor: AppColors.loginbutton,
           ),
           onPressed: () => widget.ontap(),
-          // if (_forget.currentState!.validate()){
-          //   Get.toNamed(RouteList.Otpverifyscreen);}
-
           child: CommonTextWidgets.textRoboto(
             text:widget.buttonname,
             size: Get.height * 0.025,
@@ -113,6 +88,44 @@ class _CustombuttonState extends State<Custombutton> {
           ),
         ),
       );
+  }
+}
+class Custombuttons extends StatefulWidget {
+  final String buttonname;
+  final Function ontap;
+  const Custombuttons({
+    super.key,
+    required this.buttonname,
+    required this.ontap,
+  });
 
+  @override
+  State<Custombuttons> createState() => _CustombuttonsState();
+}
+
+class _CustombuttonsState extends State<Custombuttons> {
+  @override
+  Widget build(BuildContext context) {
+    return
+      SizedBox(
+        width: double.infinity,
+        height: Get.height * 0.05,
+        child: ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
+
+            ),
+            backgroundColor: AppColors.loginbutton,
+          ),
+          onPressed: () => widget.ontap(),
+          child: CommonTextWidgets.textRoboto(
+            text:widget.buttonname,
+            size: Get.height * 0.025,
+            color: AppColors.white,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+      );
   }
 }

@@ -25,13 +25,13 @@ class RoleSelectionScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            SizedBox(height: Get.height * 0.16),
+            SizedBox(height: 16),
             Image(
               image: AssetImage('assets/images/select_role.png'),
               fit: BoxFit.cover,
             ),
             // SizedBox(height: Get.height * 0.005),
-            Text("Select you Role",style: TextStyle(fontSize: Get.height * 0.025,fontWeight: FontWeight.bold),),
+            Text("Select Your Role",style: TextStyle(fontSize: 22,fontWeight: FontWeight.bold),),
             // SizedBox(height: Get.height * 0.005),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
@@ -45,10 +45,10 @@ class RoleSelectionScreen extends StatelessWidget {
               },
               child: Padding(
                 padding: EdgeInsets.symmetric(
-                  horizontal: Get.width * 0.10,
-                  vertical: Get.height * 0.02,
+                  horizontal:25,
+                  vertical: 17,
                 ),
-                child: Text("Employer", style: TextStyle(color: Colors.white,fontSize: Get.height*0.02)),
+                child: Text("Employer", style: TextStyle(color: Colors.white,fontSize: 18)),
               ),
             ),
             // SizedBox(height: Get.height * 0.010),
@@ -64,14 +64,13 @@ class RoleSelectionScreen extends StatelessWidget {
               },
               child: Padding(
                 padding: EdgeInsets.symmetric(
-                  horizontal: Get.width * 0.10,
-                  vertical: Get.height * 0.02,
+                  horizontal: 25,
+                  vertical: 17,
                 ),
-                child: Text("Employee",style: TextStyle(fontSize: Get.height * 0.02),),
+                child: Text("Employee",style: TextStyle(fontSize:18),),
               ),
             ),
-            SizedBox(height: Get.height * 0.040),
-      
+
           ],
         ),
       ),

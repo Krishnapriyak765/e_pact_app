@@ -1,4 +1,5 @@
 import 'package:e_pact_app/utils/const/colors_const.dart';
+import 'package:e_pact_app/utils/const/route_const.dart';
 import 'package:e_pact_app/utils/helper_widgets/appbar_custom_widget.dart';
 import 'package:e_pact_app/utils/helper_widgets/common_text_widget.dart';
 import 'package:flutter/material.dart';
@@ -6,9 +7,14 @@ import 'package:get/get.dart';
 import '../controller/leave_controller.dart';
 import '../widgets/leave_card.dart';
 
-class LeaveView extends StatelessWidget {
+class LeaveView extends StatefulWidget {
   LeaveView({Key? key}) : super(key: key);
 
+  @override
+  State<LeaveView> createState() => _LeaveViewState();
+}
+
+class _LeaveViewState extends State<LeaveView> {
   final LeaveController controller = Get.put(LeaveController());
 
   final List<Map<String, dynamic>> topStats = [
@@ -35,7 +41,7 @@ class LeaveView extends StatelessWidget {
       ),
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(14.0),
+          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -58,13 +64,15 @@ class LeaveView extends StatelessWidget {
       children: [
         CommonTextWidgets.textRoboto(
           text: "Attendances/Leave",
-          size: 16,
+          size: 19,
           fontWeight: FontWeight.bold,
           color: AppColors.black,
         ),
         const Spacer(),
         ElevatedButton(
-          onPressed: () {},
+          onPressed: () {
+            Get.toNamed(RouteList.applyleave);
+          },
           style: ElevatedButton.styleFrom(
             padding: const EdgeInsets.symmetric(horizontal: 12),
             backgroundColor: Colors.green,
@@ -83,42 +91,119 @@ class LeaveView extends StatelessWidget {
   }
 
   Widget _buildTopBoxes() {
-    return GridView.count(
-      crossAxisCount: 2,
-      shrinkWrap: true,
-      crossAxisSpacing: 10,
-      mainAxisSpacing: 10,
-      physics: const NeverScrollableScrollPhysics(),
-      children:
-          topStats.map((stat) {
-            return Container(
-              height: Get.height * 4,
-              padding: const EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                border: Border.all(color: stat["color"]),
-                borderRadius: BorderRadius.circular(10),
-                color: Colors.white,
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  CommonTextWidgets.textRoboto(
-                    text: stat["title"],
-                    size: 15,
-                    fontWeight: FontWeight.bold,
-                    color: AppColors.black,
-                  ),
-                  const Spacer(),
-                  CommonTextWidgets.textRoboto(
-                    text: stat["count"],
-                    size: 20,
-                    fontWeight: FontWeight.bold,
-                    color: AppColors.black,
-                  ),
-                ],
+    return
+    //   GridView.count(
+    //
+    //   crossAxisCount: 3,
+    //   shrinkWrap: true,
+    //   crossAxisSpacing: 8,
+    //   mainAxisSpacing: 8,
+    //   physics: const NeverScrollableScrollPhysics(),
+    //   children:
+    //       topStats.map((stat) {
+    //         return
+    //           Container(
+    //
+    //           decoration: BoxDecoration(
+    //             border: Border.all(color: stat["color"]),
+    //             borderRadius: BorderRadius.circular(10),
+    //             color: Colors.white,
+    //           ),
+    //           child: Column(
+    //             crossAxisAlignment: CrossAxisAlignment.center,
+    //             mainAxisAlignment: MainAxisAlignment.start,
+    //             children: [
+    //               CommonTextWidgets.textRoboto(
+    //                 text: stat["title"],
+    //                 size: 15,
+    //                 fontWeight: FontWeight.bold,
+    //                 color: AppColors.black,
+    //               ),
+    //               SizedBox(height: 3),
+    //               CommonTextWidgets.textRoboto(
+    //                 text: stat["count"],
+    //                 size: 20,
+    //                 fontWeight: FontWeight.bold,
+    //                 color: AppColors.black,
+    //               ),
+    //             ],
+    //           ),
+    //         );
+    //       }).toList(),
+    // );
+    Column(
+      children: [
+        Row(
+          children: List.generate(2, (index) {
+            final stat = topStats[index];
+            return Expanded(
+              child: Container(
+                margin: EdgeInsets.all(6),
+                padding: EdgeInsets.symmetric(vertical: 12, horizontal: 6),
+                decoration: BoxDecoration(
+                  border: Border.all(color: stat["color"]),
+                  borderRadius: BorderRadius.circular(10),
+                  color: Colors.white,
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    CommonTextWidgets.textRoboto(
+                      text: stat["title"],
+                      size: 15,
+                      fontWeight: FontWeight.bold,
+                      color: AppColors.black,
+                      textAlign: TextAlign.center,
+                    ),
+                    SizedBox(height: 3),
+                    CommonTextWidgets.textRoboto(
+                      text: stat["count"],
+                      size: 20,
+                      fontWeight: FontWeight.bold,
+                      color: AppColors.black,
+                    ),
+                  ],
+                ),
               ),
             );
-          }).toList(),
+          }),
+        ),
+        Row(
+          children: List.generate(2, (index) {
+            final stat = topStats[index + 2]; // start from index 2
+            return Expanded(
+              child: Container(
+                margin: EdgeInsets.all(6),
+                padding: EdgeInsets.symmetric(vertical: 12, horizontal: 6),
+                decoration: BoxDecoration(
+                  border: Border.all(color: stat["color"]),
+                  borderRadius: BorderRadius.circular(10),
+                  color: Colors.white,
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    CommonTextWidgets.textRoboto(
+                      text: stat["title"],
+                      size: 15,
+                      fontWeight: FontWeight.bold,
+                      color: AppColors.black,
+                      textAlign: TextAlign.center,
+                    ),
+                    SizedBox(height: 3),
+                    CommonTextWidgets.textRoboto(
+                      text: stat["count"],
+                      size: 20,
+                      fontWeight: FontWeight.bold,
+                      color: AppColors.black,
+                    ),
+                  ],
+                ),
+              ),
+            );
+          }),
+        ),
+      ],
     );
   }
 
@@ -131,7 +216,7 @@ class LeaveView extends StatelessWidget {
             onTap: () => controller.selectTab(index),
             child: Container(
               margin: const EdgeInsets.only(right: 10),
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 15),
               decoration: BoxDecoration(
                 color: selected ? AppColors.primary : Colors.transparent,
                 borderRadius: BorderRadius.circular(8),

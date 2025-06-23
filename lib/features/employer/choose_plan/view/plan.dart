@@ -1,5 +1,6 @@
 import 'package:e_pact_app/utils/const/route_const.dart';
 import 'package:e_pact_app/utils/helper_widgets/appbar_custom_widget.dart';
+import 'package:e_pact_app/utils/helper_widgets/appbar_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -15,16 +16,17 @@ class _ChoosePlanPageState extends State<ChoosePlanPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: CustomAppBar(title: "Choose Plan"),
-
-      body: Column(
-        children: [
-          SizedBox(height: 10),
-          buildTabBar(),
-          SizedBox(height: 20),
-          buildPlanCard(),
-        ],
+    return SafeArea(
+      child: Scaffold(
+              body: Column(
+          children: [
+            AppbarWidgets(titletext: "Choose plan"),
+            SizedBox(height: Get.height*0.065),
+            buildTabBar(),
+            SizedBox(height: Get.height*0.045),
+            buildPlanCard(),
+          ],
+        ),
       ),
     );
   }
@@ -34,9 +36,10 @@ class _ChoosePlanPageState extends State<ChoosePlanPage> {
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Container(
         height: 50,
+
         padding: EdgeInsets.all(4),
         decoration: BoxDecoration(
-          color: Color(0xFFB2EBF2), // Light blue background
+          color: plans[selectedPlan]!['buttonColor'].withOpacity(0.3),
           borderRadius: BorderRadius.circular(30),
         ),
         child: Row(
@@ -71,7 +74,7 @@ class _ChoosePlanPageState extends State<ChoosePlanPage> {
                       end: Alignment.bottomRight,
                     )
                     : null,
-            color: isSelected ? null : Color(0xFFB2EBF2),
+            // color: isSelected ? null : Color(0xFFB2EBF2),
             borderRadius: BorderRadius.circular(25),
           ),
           alignment: Alignment.center,
@@ -87,60 +90,94 @@ class _ChoosePlanPageState extends State<ChoosePlanPage> {
       ),
     );
   }
-
   Widget buildPlanCard() {
     final currentPlan = plans[selectedPlan]!;
 
     return Center(
       child: Card(
-        elevation: 8,
+        color: Colors.white,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         margin: EdgeInsets.all(20),
         child: Padding(
-          padding: EdgeInsets.all(20),
+          padding: EdgeInsets.symmetric(horizontal: 16, vertical: 40),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Text(currentPlan['range'], style: TextStyle(fontSize: 18)),
+              Text(
+                currentPlan['range'],
+                style: TextStyle(
+                  fontSize: Get.height * 0.025,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
               SizedBox(height: 10),
               RichText(
                 text: TextSpan(
                   text: '£ ',
-                  style: TextStyle(fontSize: 24, color: Colors.black),
+                  style: TextStyle(
+                      fontSize: Get.height * 0.050, color: Colors.black),
                   children: [
                     TextSpan(
                       text: '${currentPlan['price']}',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        fontSize: 36,
+                        fontSize: Get.height * 0.050,
                       ),
                     ),
-                    TextSpan(text: ' / month', style: TextStyle(fontSize: 18)),
+                    TextSpan(
+                      text: ' | ',
+                      style: TextStyle(fontSize: Get.height * 0.050),
+                    ),
+                    TextSpan(
+                      text: 'per month',
+                      style: TextStyle(fontSize: Get.height * 0.025),
+                    ),
                   ],
                 ),
               ),
-              SizedBox(height: 20),
+              SizedBox(height: Get.height * 0.020),
               ...List.generate(
                 currentPlan['features'].length,
-                (index) => buildFeatureItem(currentPlan['features'][index]),
+                    (index) => buildFeatureItem(currentPlan['features'][index]),
               ),
-              SizedBox(height: 20),
-              ElevatedButton(
-                onPressed: () {
-                  Get.toNamed(RouteList.Couponapplyscreen);
-
-                  print('Picked plan: $selectedPlan');
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: currentPlan['buttonColor'],
-                  padding: EdgeInsets.symmetric(horizontal: 30, vertical: 12),
-                  shape: RoundedRectangleBorder(
+              SizedBox(height: Get.height * 0.040),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: Get.width * 0.10),
+                child: Container(
+                  width: Get.width,
+                  height: Get.height * 0.05,
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: [
+                        currentPlan['buttonColor'],
+                        currentPlan['buttonColor'].withOpacity(0.85),
+                      ],
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                    ),
                     borderRadius: BorderRadius.circular(8),
                   ),
-                ),
-                child: Text(
-                  'Pick Plan',
-                  style: TextStyle(fontSize: 16, color: Colors.white),
+                  child: Material(
+                    color: Colors.transparent,
+                    child: InkWell(
+                      borderRadius: BorderRadius.circular(8),
+                      onTap: () {
+                        Get.toNamed(RouteList.Couponapplyscreen);
+                        print('Picked plan: $selectedPlan');
+                      },
+                      child: Center(
+                        child: Text(
+                          'Pick Plan',
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.white,
+                            fontWeight: FontWeight.w600,
+                            letterSpacing: 0.5,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
                 ),
               ),
             ],
@@ -149,6 +186,80 @@ class _ChoosePlanPageState extends State<ChoosePlanPage> {
       ),
     );
   }
+
+  // Widget buildPlanCard() {
+  //   final currentPlan = plans[selectedPlan]!;
+  //
+  //   return Center(
+  //     child: Card(
+  //       // elevation: 4,
+  //       color: Colors.white,
+  //       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+  //       margin: EdgeInsets.all(20),
+  //       child: Padding(
+  //         padding: EdgeInsets.symmetric(horizontal: 10,vertical: 60),
+  //         child: Column(
+  //           mainAxisSize: MainAxisSize.min,
+  //           children: [
+  //             Text(currentPlan['range'], style: TextStyle(fontSize:  Get.height*0.025,fontWeight: FontWeight.bold)),
+  //             SizedBox(height: 10),
+  //             RichText(
+  //               text: TextSpan(
+  //                 text: '£ ',
+  //                 style: TextStyle(fontSize: Get.height*0.050, color: Colors.black),
+  //                 children: [
+  //                   TextSpan(
+  //                     text: '${currentPlan['price']}',
+  //                     style: TextStyle(
+  //                       fontWeight: FontWeight.bold,
+  //                       fontSize: Get.height*0.050,
+  //                     ),
+  //                   ),
+  //
+  //                    TextSpan(text: '| ', style: TextStyle(fontSize:Get.height*0.050,)),
+  //                   TextSpan(text: 'per month', style: TextStyle(fontSize:Get.height*0.025)),
+  //                 ],
+  //               ),
+  //             ),
+  //             SizedBox(height: Get.height*0.020),
+  //             ...List.generate(
+  //               currentPlan['features'].length,
+  //               (index) => buildFeatureItem(currentPlan['features'][index]),
+  //             ),
+  //             SizedBox(height: Get.height*0.030),
+  //             Padding(
+  //               padding:  EdgeInsets.symmetric(horizontal: Get.width*0.10),
+  //               child: SizedBox(
+  //                 width: Get.width,
+  //                 height: Get.height*0.05,
+  //                 child:
+  //
+  //                 ElevatedButton(
+  //                   onPressed: () {
+  //                     Get.toNamed(RouteList.Couponapplyscreen);
+  //
+  //                     print('Picked plan: $selectedPlan');
+  //                   },
+  //                   style: ElevatedButton.styleFrom(
+  //                     backgroundColor: currentPlan['buttonColor'],
+  //                     padding: EdgeInsets.symmetric(horizontal: 30, vertical: 12),
+  //                     shape: RoundedRectangleBorder(
+  //                       borderRadius: BorderRadius.circular(8),
+  //                     ),
+  //                   ),
+  //                   child: Text(
+  //                     'Pick Plan',
+  //                     style: TextStyle(fontSize: 16, color: Colors.white),
+  //                   ),
+  //                 ),
+  //               ),
+  //             ),
+  //           ],
+  //         ),
+  //       ),
+  //     ),
+  //   );
+  // }
 
   Widget buildFeatureItem(String feature) {
     return Padding(

@@ -356,6 +356,7 @@ import 'dart:io';
 import 'package:e_pact_app/features/employee/document_upload_screen/controller/doc_upload_controller.dart';
 import 'package:e_pact_app/features/employee/document_upload_screen/widgets/upload_card.dart';
 import 'package:e_pact_app/utils/const/colors_const.dart';
+import 'package:e_pact_app/utils/const/route_const.dart';
 import 'package:e_pact_app/utils/helper_widgets/appbar_custom_widget.dart';
 import 'package:e_pact_app/utils/helper_widgets/common_text_widget.dart';
 import 'package:flutter/material.dart';
@@ -381,10 +382,14 @@ class DocumentUploadScreen extends StatelessWidget {
         ),
         child: Column(
           children: [
-            CommonTextWidgets.textRoboto(
-              text: 'Picture/Photo',
-              size: Get.height * 0.02,
-              color: AppColors.black,
+            Align(
+              alignment: Alignment.topLeft,
+              child: CommonTextWidgets.textRoboto(
+                text: 'Picture/Photo',
+                size: Get.height * 0.02,
+                color: AppColors.black,
+                textAlign: TextAlign.left,
+              ),
             ),
             Center(
               child: Obx(
@@ -492,6 +497,9 @@ class DocumentUploadScreen extends StatelessWidget {
                 height: Get.height * 0.06,
                 child: ElevatedButton(
                   onPressed:
+                      //  () {
+                      //   Get.toNamed(RouteList.navigation);
+                      // },
                       controller.canProceed.value ? controller.proceed : null,
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColors.primary,

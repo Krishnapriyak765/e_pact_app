@@ -30,21 +30,21 @@ class _EmplyerMainAppbarState extends State<EmplyerMainAppbar> {
   Widget build(BuildContext context) {
     return
        SizedBox(
-        height: Get.height*0.25,
+        height: Get.height*0.30,
         // height: 250,
 
 // Ensure enough height to accommodate card overflow
         child: Stack(
           children: [
             Container(
-              height: Get.height*0.18,
+              height: Get.height*0.20,
               // height: Get.height*180,
               width: Get.width,
               decoration: const BoxDecoration(
                 gradient: LinearGradient(
                   begin: Alignment.centerLeft,
                   end: Alignment.centerRight,
-                  colors: [AppColors.appbarColor, AppColors.appbarbgColor],
+                  colors: [AppColors.contaninecolor, AppColors.contaninebgcolor],
                 ),
               ),
             ),
@@ -72,7 +72,7 @@ class _EmplyerMainAppbarState extends State<EmplyerMainAppbar> {
 
             // Overlapping Card
             Positioned(
-              top: Get.height*0.09, //(90) Just below the gradient
+              top: Get.height*0.11, //(90) Just below the gradient
               left: Get.width*0.027,
               right: Get.width*0.027,
               child: Card(
@@ -82,32 +82,35 @@ class _EmplyerMainAppbarState extends State<EmplyerMainAppbar> {
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: Padding(
-                  padding:  EdgeInsets.symmetric(vertical: Get.height*0.018, horizontal:Get.width*0.015 ),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
+                  padding:  EdgeInsets.symmetric(vertical: Get.height*0.03, horizontal:Get.width*0.06 ),
+                  child: Row(
+
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Row(
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           CommonTextWidgets.textRoboto(
-                              text: "Total Employee", size: Get.height*0.018, color: AppColors.black),
-                          CommonTextWidgets.textRoboto(
-                              text: "Total Present", size: Get.height*0.018, color: AppColors.black),
-                        ],
-                      ),
-                       SizedBox(height: Get.height*0.008),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
+                              text: "Total Employee", size: Get.height*0.02, color: AppColors.black,fontWeight: FontWeight.bold),
                           CommonTextWidgets.textRoboto(
                               text: "50",
                               fontWeight: FontWeight.bold,
-                              size: Get.height*0.034,
+                              size: Get.height*0.05,
                               color: AppColors.black),
+
+                        ],
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
                           CommonTextWidgets.textRoboto(
-                              text: "40",
+                              text: "Total Present", size: Get.height*0.02,fontWeight: FontWeight.bold, color: AppColors.black),
+                          CommonTextWidgets.textRoboto(
+                              text: "46",
                               fontWeight: FontWeight.bold,
-                              size: Get.height*0.034,                              color: AppColors.black),
+                              size: Get.height*0.05,                              color: AppColors.black),
                         ],
                       ),
                     ],

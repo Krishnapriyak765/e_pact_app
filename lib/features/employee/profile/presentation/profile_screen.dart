@@ -22,7 +22,7 @@ class _ProfileViewState extends State<ProfileView> {
         automaticallyImplyLeading: true,
         elevation: 0,
         centerTitle: true,
-        leading: Icon(Icons.arrow_back),
+        leading: Icon(Icons.arrow_back, color: AppColors.white),
         title: CommonTextWidgets.textRoboto(
           text: 'Profile',
           size: 16,
@@ -33,7 +33,7 @@ class _ProfileViewState extends State<ProfileView> {
         flexibleSpace: Container(
           decoration: const BoxDecoration(
             gradient: LinearGradient(
-              colors: [Color(0xFF090019), Color(0xFF3B225C), Color(0xFF0F4A86)],
+              colors: [Color(0xFF140859), Color(0xFF540A78)],
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
             ),
@@ -41,13 +41,13 @@ class _ProfileViewState extends State<ProfileView> {
         ),
         actions: [
           IconButton(
-            icon: const Icon(Icons.sync, color: Colors.white),
+            icon: const Icon(Icons.notifications_none, color: Colors.white),
             onPressed: () {},
           ),
         ],
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 25),
         child: Column(
           children: [
             _buildProfileHeader(),
