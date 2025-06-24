@@ -1,6 +1,7 @@
 import 'package:e_pact_app/features/employee/home/controller/home_controller.dart';
 import 'package:e_pact_app/features/employee/home/model/home_model.dart';
 import 'package:e_pact_app/features/employee/home/view_model/view_model.dart';
+import 'package:e_pact_app/features/employee/home/widgets/drawer_employee.dart';
 import 'package:e_pact_app/utils/const/colors_const.dart';
 import 'package:e_pact_app/utils/const/route_const.dart';
 import 'package:e_pact_app/utils/helper_widgets/appbar_custom_widget.dart';
@@ -38,16 +39,16 @@ class _HomeScreenState extends State<HomeScreen> {
     if (model == null) {
       return Center(child: CircularProgressIndicator());
     }
+    final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
     return Scaffold(
+      key: _scaffoldKey,
       backgroundColor: AppColors.background,
+      drawer: const DrawerHome(),
+
       appBar: CustomAppBar(
         prefixIcon: Icons.menu,
-        onPrefixTap: () {
-          Scaffold.of(
-            context,
-          ).openDrawer(); // make sure this works inside a Builder or Scaffold
-        },
+        onPrefixTap: () => _scaffoldKey.currentState?.openDrawer(),
         suffixIcon: Icons.notifications_none_rounded,
         onSuffixTap: () => Get.toNamed(RouteList.notification),
       ),
@@ -94,7 +95,7 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Container(
             width: Get.width * 0.22,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(3),
+              borderRadius: BorderRadius.circular(4),
               border: Border.all(color: AppColors.loginbutton),
             ),
             child: Padding(
@@ -181,28 +182,30 @@ class _HomeScreenState extends State<HomeScreen> {
           "  Check In",
           model.checkInTime,
           "On Time",
-          Icons.login,
+          'assets/icons/arrow_green.png',
           Colors.green,
         ),
         _buildInfoCard(
           "  Check Out",
           model.checkOutTime,
           "Go Home",
-          Icons.logout,
+          'assets/icons/arrow_red.png',
           Colors.red,
         ),
         _buildInfoCard(
           "  Break Time",
           model.breakTime,
           "Avg Time 30 min",
-          Icons.coffee,
+          // Icons.coffee,
+          'assets/icons/break_time.png',
           AppColors.black,
         ),
         _buildInfoCard(
           "  Total Days",
           "${model.totalDays}",
           "Working Days",
-          Icons.calendar_today,
+          // Icons.calendar_today,
+          'assets/icons/calendar_home.png',
           AppColors.black,
         ),
       ],
@@ -213,7 +216,7 @@ class _HomeScreenState extends State<HomeScreen> {
     String title,
     String value,
     String subtitle,
-    IconData icon,
+    String image,
     Color iconColor,
   ) {
     return Container(
@@ -229,7 +232,9 @@ class _HomeScreenState extends State<HomeScreen> {
           Container(
             child: Row(
               children: [
-                Icon(icon, size: 20, color: iconColor),
+                Image.asset(image, width: 22),
+
+                // Icon(icon, size: 20, color: iconColor),
                 CommonTextWidgets.textRoboto(
                   text: title,
                   size: 14,

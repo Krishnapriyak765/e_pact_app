@@ -1,8 +1,10 @@
 import 'package:e_pact_app/features/bottom_navigation/main_dashboard.dart';
+import 'package:e_pact_app/features/employee/Drawer/language/view/language_view.dart';
 import 'package:e_pact_app/features/employee/announcements/presentation/view_announcement.dart';
 import 'package:e_pact_app/features/employee/attendance_leave/view/apply_leave_view.dart';
 import 'package:e_pact_app/features/employee/attendance_leave/view/leave_view.dart';
 import 'package:e_pact_app/features/employee/document_upload_screen/view/document_upload_screen.dart';
+import 'package:e_pact_app/features/employee/home/widgets/drawer_employee.dart';
 import 'package:e_pact_app/features/employee/my_profile/view/view_my_profile.dart';
 import 'package:e_pact_app/features/employee/notification/view/notification_view.dart';
 import 'package:e_pact_app/features/employee/profile/presentation/profile_screen.dart';
@@ -24,8 +26,8 @@ import 'package:e_pact_app/features/login_screen/presentation/screens/employer_l
 import 'package:e_pact_app/features/login_screen/presentation/screens/login_screen.dart';
 import 'package:e_pact_app/features/role_initial_screen/view/role_selection.dart';
 import 'package:e_pact_app/utils/const/route_const.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
+import 'package:get/route_manager.dart';
 
 class Routes {
   static final routes = [
@@ -63,9 +65,10 @@ class Routes {
       page: () => CheckinMemberscreen(),
     ),
     GetPage(name: RouteList.AddEmployee, page: () => AddEmployee()),
-    GetPage(name: RouteList.drawer, page: () => Drawer()),
+    GetPage(name: RouteList.drawer, page: () => DrawerHome()),
     GetPage(name: RouteList.myprofile, page: () => MyProfileView()),
     GetPage(name: RouteList.notification, page: () => NotificationScreen()),
     GetPage(name: RouteList.applyleave, page: () => ApplyLeaveView()),
+    GetPage(name: RouteList.language, page: () => LanguageSelectionScreen()),
   ];
 }

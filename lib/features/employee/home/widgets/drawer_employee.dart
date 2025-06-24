@@ -1,5 +1,6 @@
 import 'package:e_pact_app/utils/const/colors_const.dart';
 import 'package:e_pact_app/utils/const/route_const.dart';
+import 'package:e_pact_app/utils/helper_widgets/common_text_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -9,7 +10,7 @@ class DrawerHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      backgroundColor: AppColors.loginbutton,
+      backgroundColor: AppColors.notitext,
       elevation: 0,
       child: Padding(
         padding: EdgeInsets.only(top: Get.height * 0.15),
@@ -22,13 +23,21 @@ class DrawerHome extends StatelessWidget {
                 horizontal: 20.0,
                 vertical: 10,
               ),
-              child: Text(
-                'Whistleblower Report',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                ),
+              child: Row(
+                children: [
+                  SizedBox(
+                    width: Get.width * 0.1,
+                    height: Get.height * 0.050,
+                    child: Image.asset('assets/icons/e_pact_logo.png'),
+                  ),
+                  SizedBox(width: Get.width * 0.050),
+                  CommonTextWidgets.textRoboto(
+                    text: "Winngoo Epact",
+                    size: 16,
+                    fontWeight: FontWeight.w900,
+                    color: AppColors.white,
+                  ),
+                ],
               ),
             ),
             const SizedBox(height: 30),
@@ -62,10 +71,12 @@ class DrawerHome extends StatelessWidget {
     required VoidCallback onTap,
   }) {
     return ListTile(
-      leading: Image.asset(icon, width: 24, height: 24),
-      title: Text(
-        title,
-        style: const TextStyle(color: Colors.white, fontSize: 15),
+      leading: CircleAvatar(child: Image.asset(icon, width: 28, height: 28)),
+      title: CommonTextWidgets.textRoboto(
+        text: title,
+        size: 14,
+        fontWeight: FontWeight.w400,
+        color: AppColors.white,
       ),
       onTap: () {
         Get.back(); // Close drawer first

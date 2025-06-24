@@ -112,50 +112,53 @@ class NotificationScreen extends StatelessWidget {
         color: const Color(0xFFF0EEF6),
         borderRadius: BorderRadius.circular(12),
       ),
-      child: Expanded(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(
-                  width: 20,
-                  child: Image.asset(
-                    "assets/icons/timer_notification.png",
-                    width: 1,
+      child: Container(
+        height: Get.height * 0.35,
+        child: Expanded(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(
+                    width: 20,
+                    child: Image.asset(
+                      "assets/icons/timer_notification.png",
+                      width: 1,
+                    ),
                   ),
-                ),
-                SizedBox(height: 16),
-              ],
-            ),
-            SizedBox(width: 5),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const SizedBox(height: 4),
-                Text(
-                  item.title,
-                  style: GoogleFonts.roboto(
-                    fontWeight: FontWeight.w500,
-                    color: AppColors.notitext,
-                    fontSize: 14,
+                  SizedBox(height: 16),
+                ],
+              ),
+              SizedBox(width: 5),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const SizedBox(height: 4),
+                  Text(
+                    item.title,
+                    style: GoogleFonts.roboto(
+                      fontWeight: FontWeight.w500,
+                      color: AppColors.notitext,
+                      fontSize: 14,
+                    ),
                   ),
-                ),
-                const SizedBox(height: 4),
-                SizedBox(width: 15),
-                Text(
-                  item.message,
-                  style: GoogleFonts.roboto(
-                    fontWeight: FontWeight.w300,
-                    color: AppColors.grey,
-                    fontSize: 12,
+                  const SizedBox(height: 4),
+                  SizedBox(width: 15),
+                  Text(
+                    item.message,
+                    style: GoogleFonts.roboto(
+                      fontWeight: FontWeight.w300,
+                      color: AppColors.grey,
+                      fontSize: 12,
+                    ),
                   ),
-                ),
-                const SizedBox(height: 4),
-              ],
-            ),
-          ],
+                  const SizedBox(height: 4),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );

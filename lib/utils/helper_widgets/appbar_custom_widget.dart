@@ -99,7 +99,6 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           end: Alignment.centerRight,
           colors: [Color(0xFF140859), Color(0xFF540A78)],
         ),
-
       ),
       child: SafeArea(
         child: Row(
