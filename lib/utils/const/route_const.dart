@@ -31,4 +31,10 @@ class RouteList {
   static const String myprofile = '/myprofile';
   static const String notification = '/notification';
   static const String applyleave = '/applyleave';
+  static const String support = '/support';
+  static const String privacypolicy = '/privacypolicy';
+  static const String faq = '/faq';
+  static const String changePassword = '/changePassword';
+  static const String notes = '/notes';
+  static const String termspolicy = '/termspolicy';
 }

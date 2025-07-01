@@ -18,13 +18,13 @@ class _LeaveViewState extends State<LeaveView> {
   final LeaveController controller = Get.put(LeaveController());
 
   final List<Map<String, dynamic>> topStats = [
-    {"title": "Leave \nBalance", "count": "09", "color": Colors.blue},
-    {"title": "Leave \nApproved", "count": "02", "color": Colors.green},
-    {"title": "Leave \nPending", "count": "15", "color": Colors.lightBlue},
-    {"title": "Leave \nCancelled", "count": "01", "color": Colors.red},
+    {"title": "Leave\n  Balance", "count": "  09", "color": Colors.blue},
+    {"title": "Leave\n  Approved", "count": "  02", "color": Colors.green},
+    {"title": "Leave\n  Pending", "count": "  15", "color": Colors.lightBlue},
+    {"title": "Leave\n  Cancelled", "count": "  01", "color": Colors.red},
   ];
 
-  final List<String> tabs = ["Upcoming", "Past", "Team Leave"];
+  final List<String> tabs = ["Upcoming", "Past", "Festival"];
 
   @override
   Widget build(BuildContext context) {
@@ -38,6 +38,7 @@ class _LeaveViewState extends State<LeaveView> {
           ).openDrawer(); // make sure this works inside a Builder or Scaffold
         },
         suffixIcon: Icons.notifications_none_rounded,
+        onSuffixTap: () => Get.toNamed(RouteList.notification),
       ),
       body: SafeArea(
         child: Padding(
@@ -45,6 +46,7 @@ class _LeaveViewState extends State<LeaveView> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              const SizedBox(height: 16),
               _buildHeader(),
               const SizedBox(height: 16),
               _buildTopBoxes(),
@@ -138,8 +140,8 @@ class _LeaveViewState extends State<LeaveView> {
             final stat = topStats[index];
             return Expanded(
               child: Container(
-                margin: EdgeInsets.all(6),
-                padding: EdgeInsets.symmetric(vertical: 12, horizontal: 6),
+                margin: EdgeInsets.all(8),
+                padding: EdgeInsets.symmetric(vertical: 12, horizontal: 16),
                 decoration: BoxDecoration(
                   border: Border.all(color: stat["color"]),
                   borderRadius: BorderRadius.circular(10),
@@ -173,8 +175,8 @@ class _LeaveViewState extends State<LeaveView> {
             final stat = topStats[index + 2]; // start from index 2
             return Expanded(
               child: Container(
-                margin: EdgeInsets.all(6),
-                padding: EdgeInsets.symmetric(vertical: 12, horizontal: 6),
+                margin: EdgeInsets.all(8),
+                padding: EdgeInsets.symmetric(vertical: 12, horizontal: 16),
                 decoration: BoxDecoration(
                   border: Border.all(color: stat["color"]),
                   borderRadius: BorderRadius.circular(10),
@@ -209,26 +211,37 @@ class _LeaveViewState extends State<LeaveView> {
 
   Widget _buildTabs() {
     return Obx(() {
-      return Row(
-        children: List.generate(tabs.length, (index) {
-          final selected = controller.selectedTabIndex.value == index;
-          return GestureDetector(
-            onTap: () => controller.selectTab(index),
-            child: Container(
-              margin: const EdgeInsets.only(right: 10),
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 15),
-              decoration: BoxDecoration(
-                color: selected ? AppColors.primary : Colors.transparent,
-                borderRadius: BorderRadius.circular(8),
+      return Container(
+        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: List.generate(tabs.length, (index) {
+            final selected = controller.selectedTabIndex.value == index;
+            return Expanded(
+              child: GestureDetector(
+                onTap: () => controller.selectTab(index),
+                child: Container(
+                  alignment: Alignment.center,
+                  padding: const EdgeInsets.symmetric(vertical: 12),
+                  decoration: BoxDecoration(
+                    color: selected ? AppColors.primary : Colors.transparent,
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: CommonTextWidgets.textRoboto(
+                    text: tabs[index],
+                    size: 16,
+                    color: selected ? Colors.white : AppColors.primary,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
               ),
-              child: CommonTextWidgets.textRoboto(
-                text: tabs[index],
-                size: 13,
-                color: selected ? Colors.white : AppColors.primary,
-              ),
-            ),
-          );
-        }),
+            );
+          }),
+        ),
       );
     });
   }

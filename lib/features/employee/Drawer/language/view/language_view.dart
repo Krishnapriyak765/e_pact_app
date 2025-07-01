@@ -26,7 +26,7 @@ class LanguageSelectionScreen extends StatelessWidget {
           () => Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(height: 10),
+              SizedBox(height: Get.height * 0.03),
               CommonTextWidgets.textRoboto(
                 text: 'Suggested',
                 size: 15,
@@ -36,7 +36,7 @@ class LanguageSelectionScreen extends StatelessWidget {
               ...controller.suggestedLanguages.map(
                 (lang) => _buildLanguageTile(lang),
               ),
-              const SizedBox(height: 10),
+              const SizedBox(height: 2),
               CommonTextWidgets.textRoboto(
                 text: 'Others',
                 size: 15,
@@ -46,7 +46,7 @@ class LanguageSelectionScreen extends StatelessWidget {
               ...controller.otherLanguages.map(
                 (lang) => _buildLanguageTile(lang),
               ),
-              const Spacer(),
+              // const Spacer(),
               Align(
                 alignment: Alignment.bottomRight,
                 child: OutlinedButton(
@@ -60,7 +60,7 @@ class LanguageSelectionScreen extends StatelessWidget {
                     side: const BorderSide(color: AppColors.notitext),
                     padding: const EdgeInsets.symmetric(
                       horizontal: 35,
-                      vertical: 10,
+                      vertical: 1,
                     ),
                   ),
                   child: CommonTextWidgets.textRoboto(
@@ -71,7 +71,7 @@ class LanguageSelectionScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(height: 10),
+              SizedBox(height: Get.height * 0.05),
             ],
           ),
         ),

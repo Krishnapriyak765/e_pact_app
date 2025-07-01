@@ -8,7 +8,6 @@ import 'package:e_pact_app/utils/helper_widgets/appbar_custom_widget.dart';
 import 'package:e_pact_app/utils/helper_widgets/common_text_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -56,31 +55,34 @@ class _HomeScreenState extends State<HomeScreen> {
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(14.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              _buildHeader(model),
-              const SizedBox(height: 16),
-              _buildSwipeButton(),
-              const SizedBox(height: 16),
-              CommonTextWidgets.textRoboto(
-                text: "Today Attendance",
-                size: 16,
-                fontWeight: FontWeight.bold,
-                color: AppColors.black,
-              ),
-              const SizedBox(height: 10),
-              _buildTodayAttendance(model),
-              const SizedBox(height: 16),
-              CommonTextWidgets.textRoboto(
-                text: "Your Activity",
-                size: 16,
-                fontWeight: FontWeight.bold,
-                color: AppColors.black,
-              ),
-              const SizedBox(height: 10),
-              _buildActivity(model),
-            ],
+          child: SingleChildScrollView(
+            physics: BouncingScrollPhysics(),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                _buildHeader(model),
+                const SizedBox(height: 16),
+                _buildSwipeButton(),
+                const SizedBox(height: 16),
+                CommonTextWidgets.textRoboto(
+                  text: "Today Attendance",
+                  size: 16,
+                  fontWeight: FontWeight.bold,
+                  color: AppColors.black,
+                ),
+                const SizedBox(height: 10),
+                _buildTodayAttendance(model),
+                const SizedBox(height: 16),
+                CommonTextWidgets.textRoboto(
+                  text: "Your Activity",
+                  size: 16,
+                  fontWeight: FontWeight.bold,
+                  color: AppColors.black,
+                ),
+                const SizedBox(height: 10),
+                _buildActivity(model),
+              ],
+            ),
           ),
         ),
       ),
@@ -92,20 +94,23 @@ class _HomeScreenState extends State<HomeScreen> {
       children: [
         Align(
           alignment: Alignment.bottomRight,
-          child: Container(
-            width: Get.width * 0.22,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(4),
-              border: Border.all(color: AppColors.loginbutton),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.all(5.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Image(image: AssetImage('assets/images/note.png')),
-                  Text('Notes ', style: TextStyle(color: Colors.blueAccent)),
-                ],
+          child: InkWell(
+            onTap: () => Get.toNamed(RouteList.notes),
+            child: Container(
+              width: Get.width * 0.22,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(4),
+                border: Border.all(color: AppColors.loginbutton),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(5.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Image(image: AssetImage('assets/images/note.png')),
+                    Text('Notes ', style: TextStyle(color: Colors.blueAccent)),
+                  ],
+                ),
               ),
             ),
           ),
@@ -150,7 +155,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       alignment: Alignment.center,
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           Container(
             height: 32,
@@ -164,7 +169,7 @@ class _HomeScreenState extends State<HomeScreen> {
           CommonTextWidgets.textRoboto(
             text: "Swipe to check Out",
             size: 16,
-            fontWeight: FontWeight.w500,
+            fontWeight: FontWeight.w400,
             color: Colors.white,
           ),
           SizedBox(),
@@ -179,31 +184,31 @@ class _HomeScreenState extends State<HomeScreen> {
       runSpacing: 10,
       children: [
         _buildInfoCard(
-          "  Check In",
-          model.checkInTime,
-          "On Time",
+          "   Check In",
+          "  ${model.checkInTime}",
+          "  On Time",
           'assets/icons/arrow_green.png',
           Colors.green,
         ),
         _buildInfoCard(
-          "  Check Out",
-          model.checkOutTime,
-          "Go Home",
+          "   Check Out",
+          '  ${model.checkOutTime}',
+          "  Go Home",
           'assets/icons/arrow_red.png',
           Colors.red,
         ),
         _buildInfoCard(
-          "  Break Time",
-          model.breakTime,
-          "Avg Time 30 min",
+          "   Break Time",
+          "  ${model.breakTime}",
+          "  Avg Time 30 min",
           // Icons.coffee,
           'assets/icons/break_time.png',
           AppColors.black,
         ),
         _buildInfoCard(
-          "  Total Days",
-          "${model.totalDays}",
-          "Working Days",
+          "   Reminder Days",
+          "  ${model.totalDays}",
+          "  Working Days",
           // Icons.calendar_today,
           'assets/icons/calendar_home.png',
           AppColors.black,
@@ -244,7 +249,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
             ),
           ),
-          const SizedBox(height: 8),
+          const SizedBox(height: 10),
           CommonTextWidgets.textRoboto(
             text: value,
             size: 15,
@@ -254,9 +259,10 @@ class _HomeScreenState extends State<HomeScreen> {
           const SizedBox(height: 4),
           CommonTextWidgets.textRoboto(
             text: subtitle,
-            size: 12,
+            size: 13,
             color: AppColors.grey,
           ),
+          const SizedBox(height: 8),
         ],
       ),
     );
@@ -267,15 +273,15 @@ class _HomeScreenState extends State<HomeScreen> {
       children: [
         _buildActivityCard(
           "Check In Hours",
-          model.checkInHours,
-          "Total Hours",
-          "",
+          " ${model.checkInHours}",
+          " Total Hours",
+          " 8 hours",
           Colors.green,
         ),
         const SizedBox(height: 10),
         _buildActivityCard(
           "To check out",
-          model.toCheckOut,
+          " ${model.toCheckOut} ",
           "",
           "",
           Colors.black,
@@ -312,7 +318,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   color: color,
                   fontWeight: FontWeight.bold,
                 ),
-
+                const SizedBox(height: 8),
                 if (subtitle.isNotEmpty)
                   CommonTextWidgets.textRoboto(
                     text: subtitle,
@@ -322,18 +328,24 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
             ),
           ),
-          CommonTextWidgets.textRoboto(
-            text: value,
-            size: 14,
-            color: color,
-            fontWeight: FontWeight.w500,
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              CommonTextWidgets.textRoboto(
+                text: value,
+                size: 14,
+                color: color,
+                fontWeight: FontWeight.w500,
+              ),
+              const SizedBox(height: 8),
+              if (extra.isNotEmpty)
+                CommonTextWidgets.textRoboto(
+                  text: " $extra",
+                  size: 12,
+                  color: AppColors.grey,
+                ),
+            ],
           ),
-          if (extra.isNotEmpty)
-            CommonTextWidgets.textRoboto(
-              text: " / $extra",
-              size: 12,
-              color: AppColors.grey,
-            ),
         ],
       ),
     );

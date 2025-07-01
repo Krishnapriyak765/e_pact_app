@@ -1,11 +1,17 @@
 import 'package:e_pact_app/features/bottom_navigation/main_dashboard.dart';
+import 'package:e_pact_app/features/employee/Drawer/changepassword/view/change_password.dart';
 import 'package:e_pact_app/features/employee/Drawer/language/view/language_view.dart';
+import 'package:e_pact_app/features/employee/account/FAQ/view/faq_view.dart';
+import 'package:e_pact_app/features/employee/account/privacy_policy/view/privacy_policy_view.dart';
+import 'package:e_pact_app/features/employee/account/support/view/support_view.dart';
+import 'package:e_pact_app/features/employee/account/terms_conditions/view/terms_view.dart';
 import 'package:e_pact_app/features/employee/announcements/presentation/view_announcement.dart';
 import 'package:e_pact_app/features/employee/attendance_leave/view/apply_leave_view.dart';
 import 'package:e_pact_app/features/employee/attendance_leave/view/leave_view.dart';
 import 'package:e_pact_app/features/employee/document_upload_screen/view/document_upload_screen.dart';
 import 'package:e_pact_app/features/employee/home/widgets/drawer_employee.dart';
 import 'package:e_pact_app/features/employee/my_profile/view/view_my_profile.dart';
+import 'package:e_pact_app/features/employee/notes/view/notes_view.dart';
 import 'package:e_pact_app/features/employee/notification/view/notification_view.dart';
 import 'package:e_pact_app/features/employee/profile/presentation/profile_screen.dart';
 import 'package:e_pact_app/features/employee/upload_required_screen/presentation/upload_require_screen.dart';
@@ -70,5 +76,11 @@ class Routes {
     GetPage(name: RouteList.notification, page: () => NotificationScreen()),
     GetPage(name: RouteList.applyleave, page: () => ApplyLeaveView()),
     GetPage(name: RouteList.language, page: () => LanguageSelectionScreen()),
+    GetPage(name: RouteList.support, page: () => SupportChatScreen()),
+    GetPage(name: RouteList.faq, page: () => FaqScreen()),
+    GetPage(name: RouteList.changePassword, page: () => ChangePasswordView()),
+    GetPage(name: RouteList.notes, page: () => NotesScreen()),
+    GetPage(name: RouteList.privacypolicy, page: () => PrivacyPolicy()),
+    GetPage(name: RouteList.termspolicy, page: () => TermsConditions()),
   ];
 }

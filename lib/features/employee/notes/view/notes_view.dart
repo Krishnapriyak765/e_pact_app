@@ -45,8 +45,12 @@ class NotesScreen extends StatelessWidget {
                           ),
                           margin: const EdgeInsets.only(bottom: 4),
                           decoration: BoxDecoration(
-                            color: AppColors.primary,
-                            borderRadius: BorderRadius.circular(12),
+                            color: AppColors.appbarbgColor,
+                            borderRadius: BorderRadius.only(
+                              bottomLeft: Radius.circular(12),
+                              topLeft: Radius.circular(12),
+                              topRight: Radius.circular(12),
+                            ),
                           ),
                           child: CommonTextWidgets.textRoboto(
                             text: message.toString(),
@@ -83,21 +87,29 @@ class NotesScreen extends StatelessWidget {
             ),
             child: Row(
               children: [
+                Icon(Icons.camera_alt_outlined),
+                SizedBox(width: 5),
                 Expanded(
-                  child: TextField(
-                    controller: controller.messageController,
-                    decoration: InputDecoration(
-                      contentPadding: const EdgeInsets.symmetric(
-                        horizontal: 12,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(18)),
+                      color: AppColors.background,
+                    ),
+                    child: TextField(
+                      controller: controller.messageController,
+                      decoration: InputDecoration(
+                        contentPadding: const EdgeInsets.symmetric(
+                          horizontal: 12,
+                        ),
+                        hintText: "Write your message",
+                        hintStyle: const TextStyle(fontSize: 14),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(30),
+                          borderSide: BorderSide.none,
+                        ),
+                        filled: true,
+                        fillColor: AppColors.background,
                       ),
-                      hintText: "Write your message",
-                      hintStyle: const TextStyle(fontSize: 14),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(30),
-                        borderSide: const BorderSide(color: Colors.grey),
-                      ),
-                      filled: true,
-                      fillColor: Colors.white,
                     ),
                   ),
                 ),
@@ -105,18 +117,12 @@ class NotesScreen extends StatelessWidget {
                 InkWell(
                   onTap: () => controller.sendMessage(),
                   borderRadius: BorderRadius.circular(30),
-                  child: Container(
-                    padding: const EdgeInsets.all(12),
-                    decoration: BoxDecoration(
-                      color: AppColors.primary,
-                      shape: BoxShape.circle,
-                    ),
-                    child: const Icon(Icons.send, color: Colors.white),
-                  ),
+                  child: const Icon(Icons.send, color: Colors.black),
                 ),
               ],
             ),
           ),
+          SizedBox(height: Get.height * 0.05),
         ],
       ),
     );

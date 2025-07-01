@@ -31,12 +31,6 @@ class _MainDashboardState extends State<MainDashboard> {
     });
   }
 
-  void _onFabPressed() {
-    setState(() {
-      _selectedIndex = 2; // Go to NotificationScreen when FAB is pressed
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,10 +38,8 @@ class _MainDashboardState extends State<MainDashboard> {
       bottomNavigationBar: CustomBottomNavBar(
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
-        selectedItemColor: AppColors.primary,
+        selectedItemColor: AppColors.loginbutton,
       ),
-      // floatingActionButton: CenterFAB(onTap: _onFabPressed),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
 }

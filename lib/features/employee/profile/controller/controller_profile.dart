@@ -10,8 +10,19 @@ class ProfileController extends GetxController {
     Get.toNamed(RouteList.myprofile);
   }
 
-  void onSupportTap() {}
-  void onTermsTap() {}
-  void onPrivacyTap() {}
-  void onFaqTap() {}
+  void onSupportTap() {
+    Get.toNamed(RouteList.support);
+  }
+
+  void onTermsTap() {
+    Get.toNamed(RouteList.termspolicy);
+  }
+
+  void onPrivacyTap() {
+    Get.toNamed(RouteList.privacypolicy);
+  }
+
+  void onFaqTap() {
+    Get.toNamed(RouteList.faq);
+  }
 }

@@ -19,56 +19,59 @@ class NotificationScreen extends StatelessWidget {
         backgroundColor: AppColors.white,
         leading: Icon(Icons.arrow_back, color: AppColors.white),
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 19.0),
-        child: Obx(
-          () => Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  InkWell(
-                    onTap: () => Get.back(),
-                    child: Icon(Icons.arrow_back_ios, color: AppColors.black),
-                  ),
-                  CommonTextWidgets.textRoboto(
-                    text: 'Notifications',
-                    fontWeight: FontWeight.w500,
-                    size: 18,
-                    color: AppColors.notitext,
-                  ),
-                  SizedBox(),
-                  SizedBox(),
-                ],
-              ),
-              const SizedBox(height: 14),
-              ..._buildGroupedNotifications(),
+      body: SingleChildScrollView(
+        physics: BouncingScrollPhysics(),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 19.0),
+          child: Obx(
+            () => Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    InkWell(
+                      onTap: () => Get.back(),
+                      child: Icon(Icons.arrow_back_ios, color: AppColors.black),
+                    ),
+                    CommonTextWidgets.textRoboto(
+                      text: 'Notifications',
+                      fontWeight: FontWeight.w500,
+                      size: 18,
+                      color: AppColors.notitext,
+                    ),
+                    SizedBox(),
+                    SizedBox(),
+                  ],
+                ),
+                const SizedBox(height: 14),
+                ..._buildGroupedNotifications(),
 
-              if (!controller.showAll.value)
-                Align(
-                  alignment: Alignment.bottomRight,
-                  child: TextButton(
-                    onPressed: controller.toggleView,
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 20,
-                        vertical: 10,
-                      ),
-                      decoration: BoxDecoration(
-                        color: AppColors.blue,
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      child: CommonTextWidgets.textRoboto(
-                        text: 'View All',
-                        color: Colors.white,
-                        size: 14,
-                        fontWeight: FontWeight.w600,
+                if (!controller.showAll.value)
+                  Align(
+                    alignment: Alignment.bottomRight,
+                    child: TextButton(
+                      onPressed: controller.toggleView,
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 20,
+                          vertical: 10,
+                        ),
+                        decoration: BoxDecoration(
+                          color: AppColors.blue,
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: CommonTextWidgets.textRoboto(
+                          text: 'View All',
+                          color: Colors.white,
+                          size: 14,
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
                     ),
                   ),
-                ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
@@ -106,59 +109,57 @@ class NotificationScreen extends StatelessWidget {
 
   Widget _buildNotificationCard(NotificationModel item) {
     return Container(
+      height: Get.height * 0.1,
       padding: const EdgeInsets.all(12),
       margin: const EdgeInsets.only(bottom: 10),
       decoration: BoxDecoration(
         color: const Color(0xFFF0EEF6),
         borderRadius: BorderRadius.circular(12),
       ),
-      child: Container(
-        height: Get.height * 0.35,
-        child: Expanded(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(
-                    width: 20,
-                    child: Image.asset(
-                      "assets/icons/timer_notification.png",
-                      width: 1,
-                    ),
+      child: Expanded(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(
+                  width: 20,
+                  child: Image.asset(
+                    "assets/icons/timer_notification.png",
+                    width: 1,
                   ),
-                  SizedBox(height: 16),
-                ],
-              ),
-              SizedBox(width: 5),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const SizedBox(height: 4),
-                  Text(
-                    item.title,
-                    style: GoogleFonts.roboto(
-                      fontWeight: FontWeight.w500,
-                      color: AppColors.notitext,
-                      fontSize: 14,
-                    ),
+                ),
+                SizedBox(height: 3),
+              ],
+            ),
+            SizedBox(width: 5),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const SizedBox(height: 4),
+                Text(
+                  item.title,
+                  style: GoogleFonts.roboto(
+                    fontWeight: FontWeight.w500,
+                    color: AppColors.notitext,
+                    fontSize: 14,
                   ),
-                  const SizedBox(height: 4),
-                  SizedBox(width: 15),
-                  Text(
-                    item.message,
-                    style: GoogleFonts.roboto(
-                      fontWeight: FontWeight.w300,
-                      color: AppColors.grey,
-                      fontSize: 12,
-                    ),
+                ),
+                const SizedBox(height: 4),
+                SizedBox(width: 15),
+                Text(
+                  item.message,
+                  style: GoogleFonts.roboto(
+                    fontWeight: FontWeight.w300,
+                    color: AppColors.grey,
+                    fontSize: 12,
                   ),
-                  const SizedBox(height: 4),
-                ],
-              ),
-            ],
-          ),
+                ),
+                const SizedBox(height: 4),
+              ],
+            ),
+          ],
         ),
       ),
     );
